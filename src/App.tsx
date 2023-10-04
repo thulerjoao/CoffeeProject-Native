@@ -1,23 +1,22 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {SafeAreaView, StyleSheet, Text} from 'react-native';
-import styled from 'styled-components/native';
+import {SafeAreaView} from 'react-native';
+import Loading from './Pages/loading';
 
-const TextNew = styled.Text`
-  background-color: red;
-  font-size: 24px;
-`;
+// const TextNew = styled.Text`
+//   background-color: red;
+//   font-size: 24px;
+// `;
 
-const styles = StyleSheet.create({
-  container: {
-    color: 'blue',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     color: 'blue',
+//   },
+// });
 
 const App = () => {
   return (
     <SafeAreaView>
-      <Text style={styles.container}>Coffee App</Text>
-      <TextNew>Testeee </TextNew>
+      <Loading />
     </SafeAreaView>
   );
 };
