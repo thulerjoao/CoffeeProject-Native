@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {SafeAreaView} from 'react-native';
-import Loading from './Pages/loading';
+// import Loading from './Pages/loading';
 import Home from './Pages/Home';
 
 // const TextNew = styled.Text`

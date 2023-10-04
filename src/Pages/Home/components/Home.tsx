@@ -1,9 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {Image, StatusBar, Text} from 'react-native';
+import {StatusBar} from 'react-native';
 import {
   BottomComponent,
   CoffeeImage,
   HomeContainer,
+  HorizontalList,
   Location,
   LocationIcon,
   LocationText,
@@ -18,8 +19,37 @@ import Icon from '../assets/Icon.png';
 import Cart from '../assets/Cart.png';
 import Glass from '../assets/Glass.png';
 import Coffee from '../assets/Coffee.png';
+import Coffee01 from '../assets/Coffee01.png';
+import VerticalCard from './VerticalCard';
 
 const Home = () => {
+  const data = [
+    {
+      id: '1',
+      imageSource: Coffee01,
+      type: 'Tradicional',
+      title: 'Latte',
+      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '2',
+      imageSource: Coffee01,
+      type: 'Tradicional',
+      title: 'Latte',
+      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '3',
+      imageSource: Coffee01,
+      type: 'Tradicional',
+      title: 'Latte',
+      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      price: 'R$ 9,90',
+    },
+  ];
+
   return (
     <HomeContainer>
       <StatusBar
@@ -46,6 +76,13 @@ const Home = () => {
           </SearchBarContainer>
           <CoffeeImage source={Coffee} />
         </Search>
+        <HorizontalList
+          data={data}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          renderItem={({item}: any) => <VerticalCard data={item} />}
+          keyExtractor={item => item.id}
+        />
       </TopComponent>
       <BottomComponent></BottomComponent>
     </HomeContainer>

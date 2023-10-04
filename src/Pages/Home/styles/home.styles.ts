@@ -88,3 +88,11 @@ export const CoffeeImage = styled.Image`
   margin-left: 80%;
   margin-top: 0;
 `;
+
+// ---------HorizontalList----------------------
+
+export const HorizontalList = styled.FlatList`
+  position: relative;
+  min-height: 280px;
+  bottom: 50px;
+`;
