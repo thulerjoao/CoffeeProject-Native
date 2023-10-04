@@ -1,11 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {Text} from 'react-native';
-import {LoadingContainer} from '../styles/loading.styles';
+import {Image, StatusBar} from 'react-native';
+import {LoadingBar, LoadingContainer} from '../styles/loading.styles';
+import Logo from '../assets/Logo.png';
 
 const Loading = () => {
   return (
     <LoadingContainer>
-      <Text>Loading page</Text>
+      <StatusBar backgroundColor="#7f47f8" barStyle="light-content" />
+      <Image source={Logo} />
+      <LoadingBar />
     </LoadingContainer>
   );
 };
