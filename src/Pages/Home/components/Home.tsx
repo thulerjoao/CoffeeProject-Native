@@ -76,14 +76,14 @@ const Home = () => {
           </SearchBarContainer>
           <CoffeeImage source={Coffee} />
         </Search>
-        <HorizontalList
-          data={data}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}: any) => <VerticalCard data={item} />}
-          keyExtractor={item => item.id}
-        />
       </TopComponent>
+      <HorizontalList
+        data={data}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        renderItem={({item}: any) => <VerticalCard data={item} />}
+        keyExtractor={(item: {id: string}) => item.id}
+      />
       <BottomComponent></BottomComponent>
     </HomeContainer>
   );

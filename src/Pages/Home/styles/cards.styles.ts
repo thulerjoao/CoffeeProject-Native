@@ -6,7 +6,7 @@ export const CardTop = styled.View`
   margin: 0 15px;
   margin-top: 40px;
   width: 188px;
-  /* height: 262px; */
+  height: 245px;
   align-items: center;
   border-radius: 6px 36px 6px 36px;
   background-color: #f3f2f2;

@@ -54,12 +54,13 @@ export const Search = styled.View`
 
 export const SearchText = styled.Text`
   width: 100%;
+  font-weight: 600;
   margin-top: 35px;
   margin-bottom: 25px;
   flex-direction: column;
   justify-content: flex-start;
   color: white;
-  font-size: 21px;
+  font-size: 20px;
 `;
 
 export const SearchBarContainer = styled.View`
@@ -80,7 +81,7 @@ export const SearchBarIcon = styled.Image`
 export const SearchBarInput = styled.TextInput`
   background-color: #403937;
   font-size: 16px;
-  padding: 10px 0;
+  padding: 8px 0;
   color: white;
 `;
 
@@ -92,7 +93,8 @@ export const CoffeeImage = styled.Image`
 // ---------HorizontalList----------------------
 
 export const HorizontalList = styled.FlatList`
-  position: relative;
-  min-height: 280px;
-  bottom: 50px;
+  position: absolute;
+  /* min-height: 280px; */
+  padding: 0 15%;
+  top: 250px;
 `;
