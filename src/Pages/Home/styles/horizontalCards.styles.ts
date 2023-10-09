@@ -1,56 +1,45 @@
-import styled, {css} from 'styled-components/native';
+import styled from 'styled-components/native';
 
 // ----BottomCards------
 
 export const CardBottom = styled.TouchableOpacity`
-  margin-left: 35px;
-  margin-top: 40px;
-  width: 188px;
-  height: 245px;
+  margin-top: 30px;
+  width: 100%;
+  height: 115px;
   align-items: center;
   border-radius: 6px 36px 6px 36px;
   background-color: #f3f2f2;
-
-  ${(props: {isFirst: boolean}) =>
-    props.isFirst &&
-    css`
-      margin-left: 80px;
-    `}
+  flex-direction: row;
 `;
 
 export const CardBottomImage = styled.Image`
-  top: -40px;
-  position: absolute;
+  top: -20px;
+  margin-left: 15px;
+  width: 95px;
+  aspect-ratio: 1;
 `;
 
-export const CardBottomType = styled.Text`
-  margin-top: 85px;
-  background-color: #ebe5f9;
-  color: #4b2994;
-  border-radius: 10px;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 2px 12px;
+export const CardBottomTexts = styled.View`
+  margin-left: 15px;
 `;
 
 export const CardBottomTitle = styled.Text`
-  margin-top: 10px;
   font-weight: 700;
   color: #403937;
-  font-size: 19px;
+  font-size: 16px;
 `;
 
 export const CardBottomText = styled.Text`
   color: #8d8585;
   font-size: 11px;
-  margin: 0 9px;
+  width: 65%;
   margin-top: 5px;
-  text-align: center;
+  text-align: start;
 `;
 
 export const CardBottomPrice = styled.Text`
   color: #c47f17;
-  margin-top: 17px;
-  font-weight: 800;
-  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 900;
+  font-size: 19px;
 `;

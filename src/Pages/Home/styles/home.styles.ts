@@ -96,6 +96,7 @@ export const BottomComponent = styled.View`
   /* min-height: 50000px; */
   margin-top: 215px;
   padding: 0 32px;
+  margin-bottom: 80px;
 `;
 
 export const TopSection = styled.View`

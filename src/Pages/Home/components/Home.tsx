@@ -27,6 +27,7 @@ import Glass from '../assets/Glass.png';
 import Coffee from '../assets/Coffee.png';
 import Coffee01 from '../assets/Coffee01.png';
 import VerticalCard from './VerticalCard';
+import HorizontalCard from './HorizontalCard';
 
 const Home = () => {
   const data = [
@@ -108,7 +109,9 @@ const Home = () => {
         </TopSection>
         <BottomSection>
           <Text>Tradicionais</Text>
-          <Text>Cards Here</Text>
+          {data.map(item => {
+            return <HorizontalCard key={item.id} data={item} />;
+          })}
         </BottomSection>
       </BottomComponent>
     </HomeContainer>

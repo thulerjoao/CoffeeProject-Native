@@ -4,20 +4,22 @@ import {
   CardBottomImage,
   CardBottomPrice,
   CardBottomText,
+  CardBottomTexts,
   CardBottomTitle,
   CardBottomType,
 } from '../styles/horizontalCards.styles';
 
-const VerticalCard = ({data}: any) => {
+const HorizontalCard = ({data}: any) => {
   return (
     <CardBottom>
       <CardBottomImage source={data.imageSource} />
-      <CardBottomType>{data.type}</CardBottomType>
-      <CardBottomTitle>{data.title}</CardBottomTitle>
-      <CardBottomText>{data.description}</CardBottomText>
-      <CardBottomPrice>{data.price}</CardBottomPrice>
+      <CardBottomTexts>
+        <CardBottomTitle>{data.title}</CardBottomTitle>
+        <CardBottomText>{data.description}</CardBottomText>
+        <CardBottomPrice>{data.price}</CardBottomPrice>
+      </CardBottomTexts>
     </CardBottom>
   );
 };
 
-export default VerticalCard;
+export default HorizontalCard;
