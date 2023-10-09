@@ -6,7 +6,6 @@ import {
   CardBottomText,
   CardBottomTexts,
   CardBottomTitle,
-  CardBottomType,
 } from '../styles/horizontalCards.styles';
 
 const HorizontalCard = ({data}: any) => {

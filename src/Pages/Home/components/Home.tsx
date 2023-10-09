@@ -1,8 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar, Text} from 'react-native';
+import {StatusBar} from 'react-native';
 import {
   BottomComponent,
   BottomSection,
+  BottomSpace,
+  BottomTitle,
   CoffeeImage,
   HomeContainer,
   HorizontalList,
@@ -50,6 +52,31 @@ const Home = () => {
     },
     {
       id: '3',
+      imageSource: Coffee01,
+      type: 'Tradicional',
+      title: 'Latte',
+      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '4',
+      isFirst: true as true,
+      imageSource: Coffee01,
+      type: 'Tradicional',
+      title: 'Latte',
+      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '5',
+      imageSource: Coffee01,
+      type: 'Tradicional',
+      title: 'Latte',
+      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '6',
       imageSource: Coffee01,
       type: 'Tradicional',
       title: 'Latte',
@@ -108,7 +135,15 @@ const Home = () => {
           </TopTitleFirstSection>
         </TopSection>
         <BottomSection>
-          <Text>Tradicionais</Text>
+          <BottomTitle>Tradicionais</BottomTitle>
+          {data.map(item => {
+            return <HorizontalCard key={item.id} data={item} />;
+          })}<BottomSpace></BottomSpace>
+          <BottomTitle>Doces</BottomTitle>
+          {data.map(item => {
+            return <HorizontalCard key={item.id} data={item} />;
+          })}<BottomSpace></BottomSpace>
+          <BottomTitle>Especiais</BottomTitle>
           {data.map(item => {
             return <HorizontalCard key={item.id} data={item} />;
           })}

@@ -135,3 +135,15 @@ export const TypeButtonsText = styled.Text`
 export const BottomSection = styled.View`
   width: 100%;
 `;
+
+export const BottomTitle = styled.Text`
+  width: 100%;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 10px 0;
+`;
+
+export const BottomSpace = styled.View`
+  width: 100%;
+  margin-bottom: 30px;
+`;
