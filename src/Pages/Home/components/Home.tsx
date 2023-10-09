@@ -138,11 +138,13 @@ const Home = () => {
           <BottomTitle>Tradicionais</BottomTitle>
           {data.map(item => {
             return <HorizontalCard key={item.id} data={item} />;
-          })}<BottomSpace></BottomSpace>
+          })}
+          <BottomSpace />
           <BottomTitle>Doces</BottomTitle>
           {data.map(item => {
             return <HorizontalCard key={item.id} data={item} />;
-          })}<BottomSpace></BottomSpace>
+          })}
+          <BottomSpace />
           <BottomTitle>Especiais</BottomTitle>
           {data.map(item => {
             return <HorizontalCard key={item.id} data={item} />;
