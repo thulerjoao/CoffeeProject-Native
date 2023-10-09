@@ -1,24 +1,15 @@
 import styled from 'styled-components/native';
 
-export const HomeContainer = styled.View`
+export const HomeContainer = styled.ScrollView`
   background-color: white;
   width: 100%;
   min-height: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
 `;
 
 export const TopComponent = styled.View`
   height: 365px;
   width: 100%;
   background-color: #272221;
-`;
-
-export const BottomComponent = styled.View`
-  width: 100%;
-  margin-top: 215px;
-  background-color: white;
 `;
 
 // ------------Location-------------------
@@ -94,7 +85,52 @@ export const CoffeeImage = styled.Image`
 
 export const HorizontalList = styled.FlatList`
   position: absolute;
-  /* min-height: 280px; */
-  padding: 0 15%;
   top: 250px;
+`;
+
+// ---------VerticalList----------------------
+
+export const BottomComponent = styled.View`
+  width: 100%;
+  /* background-color: pink; */
+  /* min-height: 50000px; */
+  margin-top: 215px;
+  padding: 0 32px;
+`;
+
+export const TopSection = styled.View`
+  width: 100%;
+`;
+
+export const TopTitleFirstSection = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 15px 0px;
+`;
+
+export const TopTitleText = styled.Text`
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+`;
+
+export const TypeButtons = styled.TouchableOpacity`
+  margin-right: 10px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #7f47f8;
+  border-radius: 15px;
+`;
+
+export const TypeButtonsText = styled.Text`
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 11px;
+  text-align: center;
+  color: #4b2994;
+`;
+
+export const BottomSection = styled.View`
+  width: 100%;
 `;

@@ -1,15 +1,21 @@
-import styled from 'styled-components/native';
+import styled, {css} from 'styled-components/native';
 
 // ----TopCards------
 
-export const CardTop = styled.View`
-  margin: 0 15px;
+export const CardTop = styled.TouchableOpacity`
+  margin-left: 35px;
   margin-top: 40px;
   width: 188px;
   height: 245px;
   align-items: center;
   border-radius: 6px 36px 6px 36px;
   background-color: #f3f2f2;
+
+  ${(props: {isFirst: boolean}) =>
+    props.isFirst &&
+    css`
+      margin-left: 80px;
+    `}
 `;
 
 export const CardTopImage = styled.Image`

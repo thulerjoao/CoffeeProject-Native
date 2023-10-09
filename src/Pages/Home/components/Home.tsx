@@ -1,7 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar} from 'react-native';
+import {StatusBar, Text} from 'react-native';
 import {
   BottomComponent,
+  BottomSection,
   CoffeeImage,
   HomeContainer,
   HorizontalList,
@@ -14,6 +15,11 @@ import {
   SearchBarInput,
   SearchText,
   TopComponent,
+  TopSection,
+  TopTitleFirstSection,
+  TopTitleText,
+  TypeButtons,
+  TypeButtonsText,
 } from '../styles/home.styles';
 import Icon from '../assets/Icon.png';
 import Cart from '../assets/Cart.png';
@@ -26,6 +32,7 @@ const Home = () => {
   const data = [
     {
       id: '1',
+      isFirst: true as true,
       imageSource: Coffee01,
       type: 'Tradicional',
       title: 'Latte',
@@ -84,7 +91,26 @@ const Home = () => {
         renderItem={({item}: any) => <VerticalCard data={item} />}
         keyExtractor={(item: {id: string}) => item.id}
       />
-      <BottomComponent></BottomComponent>
+      <BottomComponent>
+        <TopSection>
+          <TopTitleText>Nossos cafés</TopTitleText>
+          <TopTitleFirstSection>
+            <TypeButtons>
+              <TypeButtonsText>Tradicionais</TypeButtonsText>
+            </TypeButtons>
+            <TypeButtons>
+              <TypeButtonsText>Doces</TypeButtonsText>
+            </TypeButtons>
+            <TypeButtons>
+              <TypeButtonsText>Especiais</TypeButtonsText>
+            </TypeButtons>
+          </TopTitleFirstSection>
+        </TopSection>
+        <BottomSection>
+          <Text>Tradicionais</Text>
+          <Text>Cards Here</Text>
+        </BottomSection>
+      </BottomComponent>
     </HomeContainer>
   );
 };

@@ -6,7 +6,7 @@ import {
   CardTopText,
   CardTopTitle,
   CardTopType,
-} from '../styles/cards.styles';
+} from '../styles/verticalCards.styles';
 
 const VerticalCard = ({data}: any) => {
   return (
