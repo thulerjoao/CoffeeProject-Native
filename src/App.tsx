@@ -1,8 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {SafeAreaView} from 'react-native';
+import Finish from './Pages/finish';
 // import Loading from './Pages/loading';
 // import Home from './Pages/Home';
-import Product from './Pages/product';
+// import Product from './Pages/product';
 
 // const TextNew = styled.Text`
 //   background-color: red;
@@ -20,7 +21,8 @@ const App = () => {
     <SafeAreaView>
       {/* <Loading /> */}
       {/* <Home /> */}
-      <Product />
+      {/* <Product /> */}
+      <Finish />
     </SafeAreaView>
   );
 };
