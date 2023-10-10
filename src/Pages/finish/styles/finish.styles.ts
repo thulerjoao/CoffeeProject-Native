@@ -23,7 +23,7 @@ export const FinishMessage = styled.Text`
   padding: 0 80px;
   text-align: center;
   margin-bottom: 70px;
-`
+`;
 export const FinishButton = styled.TouchableOpacity`
   width: 247px;
   justify-content: center;

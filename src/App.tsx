@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {SafeAreaView} from 'react-native';
-import Finish from './Pages/finish';
+import Cart from './Pages/cart';
+// import Finish from './Pages/finish';
 // import Loading from './Pages/loading';
 // import Home from './Pages/Home';
 // import Product from './Pages/product';
@@ -22,7 +23,8 @@ const App = () => {
       {/* <Loading /> */}
       {/* <Home /> */}
       {/* <Product /> */}
-      <Finish />
+      {/* <Finish /> */}
+      <Cart />
     </SafeAreaView>
   );
 };
