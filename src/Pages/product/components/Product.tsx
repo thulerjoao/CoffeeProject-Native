@@ -1,20 +1,31 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-import { StatusBar } from 'react-native';
+import {StatusBar} from 'react-native';
 import coffee from '../assets/coffee.png';
 import purpleCart from '../assets/purpleCart.png';
 import whiteBackArrow from '../assets/whiteBackArrow.png';
 import Smoke from '../assets/Smoke.png';
 
 import {
+  AddButton,
+  AddButtonText,
+  AddContainer,
   BackAndCart,
   BackArrow,
+  BottomContainer,
   CartImage,
   CupImage,
   Description,
   MainTitle,
+  MinusAndPlus,
+  MinusAndPlusText,
+  NumberText,
   Price,
   ProductContainer,
+  SelectSizeText,
+  SizeButton,
+  SizeButtonText,
+  SizeContainer,
   SmokeImage,
   TitleAndPrice,
   TopContainer,
@@ -45,6 +56,32 @@ const Product = () => {
         <SmokeImage source={Smoke} />
         <CupImage source={coffee} />
       </TopContainer>
+      <BottomContainer>
+        <SelectSizeText>Selecione o tamanho:</SelectSizeText>
+        <SizeContainer>
+          <SizeButton>
+            <SizeButtonText>114ml</SizeButtonText>
+          </SizeButton>
+          <SizeButton>
+            <SizeButtonText>140ml</SizeButtonText>
+          </SizeButton>
+          <SizeButton>
+            <SizeButtonText>227ml</SizeButtonText>
+          </SizeButton>
+        </SizeContainer>
+        <AddContainer>
+          <MinusAndPlus>
+            <MinusAndPlusText>--</MinusAndPlusText>
+          </MinusAndPlus>
+          <NumberText>1</NumberText>
+          <MinusAndPlus>
+            <MinusAndPlusText>+</MinusAndPlusText>
+          </MinusAndPlus>
+          <AddButton>
+            <AddButtonText>ADICIONAR</AddButtonText>
+          </AddButton>
+        </AddContainer>
+      </BottomContainer>
     </ProductContainer>
   );
 };
