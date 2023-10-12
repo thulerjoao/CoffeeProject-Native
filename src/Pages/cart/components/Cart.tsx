@@ -1,38 +1,71 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {Dimensions, StatusBar} from 'react-native';
+import {StatusBar} from 'react-native';
 import {
   BackArrowImage,
-  BigTrash,
-  BigTrashContainer,
-  BottomContainer,
-  BottominternalContainer,
   CardsContainer,
   CartContainer,
   CartTitle,
-  CoffeeImage,
-  DescriptionsContainer,
-  InternalBottomContainer,
   InvisibleComponent,
-  LittleTrash,
-  LittleTrashContainer,
-  MinusAndPlusContainer,
-  NameDescription,
-  NumerText,
-  RightContainer,
-  RightInternalContainer,
-  SignText,
-  SizeDescription,
   TopContainer,
 } from '../styles/cart.styles';
 
 import BlackBackArrow from '../assets/BlackBackArrow.png';
-// import TopCup01 from '../assets/TopCup01.png';
+import Card from './Card';
+import TopCup01 from '../assets/TopCup01.png';
 import TopCup02 from '../assets/TopCup02.png';
-import BigTrashIcon from '../assets/BigTrashIcon.png';
-import SmallTrash from '../assets/SmallTrash.png';
 
 const Cart = () => {
-  const screenWidth = Dimensions.get('window').width;
+  const data = [
+    {
+      id: '1',
+      imageSource: TopCup01,
+      type: 'Tradicional',
+      title: 'Irlandês',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '2',
+      imageSource: TopCup02,
+      type: 'Tradicional',
+      title: 'Capuccino',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '3',
+      imageSource: TopCup01,
+      type: 'Tradicional',
+      title: 'Irlandês',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '4',
+      isFirst: true as true,
+      imageSource: TopCup02,
+      type: 'Tradicional',
+      title: 'Capuccino',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '5',
+      imageSource: TopCup01,
+      type: 'Tradicional',
+      title: 'Irlandês',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '6',
+      imageSource: TopCup02,
+      type: 'Tradicional',
+      title: 'Capuccino',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+  ];
 
   return (
     <CartContainer>
@@ -46,33 +79,11 @@ const Cart = () => {
         <CartTitle>Carrinho</CartTitle>
         <InvisibleComponent />
       </TopContainer>
-      <CardsContainer>CARDS HERE</CardsContainer>
-      <BottomContainer horizontal showsHorizontalScrollIndicator={false}>
-        <InternalBottomContainer>
-          <BigTrashContainer>
-            <BigTrash source={BigTrashIcon} />
-          </BigTrashContainer>
-          <RightContainer screenWidth={screenWidth}>
-            <RightInternalContainer screenWidth={screenWidth}>
-              <CoffeeImage source={TopCup02} />
-              <DescriptionsContainer>
-                <NameDescription>Capuccino</NameDescription>
-                <SizeDescription>227ml</SizeDescription>
-                <BottominternalContainer>
-                  <MinusAndPlusContainer>
-                    <SignText>--</SignText>
-                    <NumerText>1</NumerText>
-                    <SignText>+</SignText>
-                  </MinusAndPlusContainer>
-                  <LittleTrashContainer>
-                    <LittleTrash source={SmallTrash} />
-                  </LittleTrashContainer>
-                </BottominternalContainer>
-              </DescriptionsContainer>
-            </RightInternalContainer>
-          </RightContainer>
-        </InternalBottomContainer>
-      </BottomContainer>
+      <CardsContainer>
+        {data.map(element => {
+          return <Card element={element} key={element.id} />;
+        })}
+      </CardsContainer>
     </CartContainer>
   );
 };
