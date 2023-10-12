@@ -5,8 +5,14 @@ import {
   CardsContainer,
   CartContainer,
   CartTitle,
+  ConfirmButton,
+  ConfirmButtonText,
+  FooterComponent,
   InvisibleComponent,
   TopContainer,
+  ValueContainer,
+  ValueNumber,
+  ValueText,
 } from '../styles/cart.styles';
 
 import BlackBackArrow from '../assets/BlackBackArrow.png';
@@ -40,31 +46,31 @@ const Cart = () => {
       size: '227ml',
       price: 'R$ 9,90',
     },
-    {
-      id: '4',
-      isFirst: true as true,
-      imageSource: TopCup02,
-      type: 'Tradicional',
-      title: 'Capuccino',
-      size: '227ml',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '5',
-      imageSource: TopCup01,
-      type: 'Tradicional',
-      title: 'Irlandês',
-      size: '227ml',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '6',
-      imageSource: TopCup02,
-      type: 'Tradicional',
-      title: 'Capuccino',
-      size: '227ml',
-      price: 'R$ 9,90',
-    },
+    // {
+    //   id: '4',
+    //   isFirst: true as true,
+    //   imageSource: TopCup02,
+    //   type: 'Tradicional',
+    //   title: 'Capuccino',
+    //   size: '227ml',
+    //   price: 'R$ 9,90',
+    // },
+    // {
+    //   id: '5',
+    //   imageSource: TopCup01,
+    //   type: 'Tradicional',
+    //   title: 'Irlandês',
+    //   size: '227ml',
+    //   price: 'R$ 9,90',
+    // },
+    // {
+    //   id: '6',
+    //   imageSource: TopCup02,
+    //   type: 'Tradicional',
+    //   title: 'Capuccino',
+    //   size: '227ml',
+    //   price: 'R$ 9,90',
+    // },
   ];
 
   return (
@@ -84,6 +90,15 @@ const Cart = () => {
           return <Card element={element} key={element.id} />;
         })}
       </CardsContainer>
+      <FooterComponent>
+        <ValueContainer>
+          <ValueText>Valor total</ValueText>
+          <ValueNumber>R$ 9,90</ValueNumber>
+        </ValueContainer>
+        <ConfirmButton>
+          <ConfirmButtonText>CONFIRMAR PEDIDO</ConfirmButtonText>
+        </ConfirmButton>
+      </FooterComponent>
     </CartContainer>
   );
 };

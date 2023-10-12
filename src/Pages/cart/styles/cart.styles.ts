@@ -32,3 +32,42 @@ export const CardsContainer = styled.ScrollView`
 `;
 
 // -----
+
+export const FooterComponent = styled.View`
+  height: 160px;
+  border-top-width: 1px;
+  border-top-color: #ededed;
+  width: 100%;
+  padding: 35px 35px;
+  justify-content: space-between;
+`;
+
+export const ValueContainer = styled.View`
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+export const ValueText = styled.Text`
+  font-weight: 400;
+  font-size: 16px;
+  color: black;
+`;
+export const ValueNumber = styled.Text`
+  font-weight: 900;
+  font-size: 18px;
+  color: black;
+`;
+export const ConfirmButton = styled.TouchableOpacity`
+  width: 100%;
+  height: 46px;
+  background-color: #c47f16;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+`;
+export const ConfirmButtonText = styled.Text`
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+`;
