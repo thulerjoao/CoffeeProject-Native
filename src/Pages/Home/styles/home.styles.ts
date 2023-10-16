@@ -83,16 +83,19 @@ export const CoffeeImage = styled.Image`
 
 // ---------HorizontalList----------------------
 
-export const HorizontalList = styled.FlatList`
+export const HorizontalList = styled.View`
+  width: 100%;
   position: absolute;
   top: 250px;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 `;
 
 // ---------VerticalList----------------------
 
 export const BottomComponent = styled.View`
   width: 100%;
-  /* background-color: pink; */
   /* min-height: 50000px; */
   margin-top: 215px;
   padding: 0 32px;

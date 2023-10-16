@@ -34,7 +34,7 @@ export const CardBottomText = styled.Text`
   font-size: 11px;
   width: 65%;
   margin-top: 5px;
-  text-align: start;
+  text-align: left;
 `;
 
 export const CardBottomPrice = styled.Text`

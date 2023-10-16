@@ -1,5 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar} from 'react-native';
+import {Dimensions, StatusBar} from 'react-native';
+import Carousel from 'react-native-snap-carousel';
 import {
   BottomComponent,
   BottomSection,
@@ -23,6 +25,7 @@ import {
   TypeButtons,
   TypeButtonsText,
 } from '../styles/home.styles';
+
 import Icon from '../assets/Icon.png';
 import Cart from '../assets/Cart.png';
 import Glass from '../assets/Glass.png';
@@ -31,8 +34,18 @@ import Coffee01 from '../assets/Coffee01.png';
 import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
 
-const Home = () => {
-  const data = [
+interface CoffeeItem {
+  id: string;
+  isFirst?: boolean;
+  imageSource: string;
+  type: string;
+  title: string;
+  description: string;
+  price: string;
+}
+
+const Home: React.FC = () => {
+  const data: CoffeeItem[] = [
     {
       id: '1',
       isFirst: true as true,
@@ -80,10 +93,29 @@ const Home = () => {
       imageSource: Coffee01,
       type: 'Tradicional',
       title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremosa',
+      description: 'Café expresso com o dobro de leite e espuma cremose',
       price: 'R$ 9,90',
     },
   ];
+
+  const renderItem = ({
+    item,
+    index,
+    parallaxProps,
+  }: {
+    item?: CoffeeItem;
+    index?: number;
+    parallaxProps?: any;
+  }) => {
+    // Calcula o fator de escala com base na posição do item no carrossel
+    const scale = (parallaxProps?.style?.transform[1]?.scale || 1) * 0.5;
+
+    const cardStyle = {transform: [{scale}], opacity: 1};
+
+    return <VerticalCard key={index} data={item} style={cardStyle} />;
+  };
+
+  const screenWidth = Dimensions.get('window').width;
 
   return (
     <HomeContainer>
@@ -112,13 +144,19 @@ const Home = () => {
           <CoffeeImage source={Coffee} />
         </Search>
       </TopComponent>
-      <HorizontalList
-        data={data}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        renderItem={({item}: any) => <VerticalCard data={item} />}
-        keyExtractor={(item: {id: string}) => item.id}
-      />
+      <HorizontalList>
+        <Carousel
+          data={data}
+          renderItem={renderItem}
+          sliderWidth={screenWidth} // Largura do carrossel
+          itemWidth={220} // Largura de cada item do carrossel
+          layout={'default'} // Tipo de layout (pode ser 'default', 'stack', 'tinder', etc.)
+          layoutCardOffset={0} // Espaçamento entre os cartões
+          horizontal // Para um carrossel horizontal
+          showsHorizontalScrollIndicator={false} // Ocultar a barra de rolagem horizontal
+          activeSlideAlignment={'start'} // Alinhar o slide ativo à esquerda
+        />
+      </HorizontalList>
       <BottomComponent>
         <TopSection>
           <TopTitleText>Nossos cafés</TopTitleText>

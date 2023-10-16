@@ -2,8 +2,8 @@
 import {SafeAreaView} from 'react-native';
 // import Cart from './Pages/cart';
 // import Finish from './Pages/finish';
-import Loading from './Pages/loading';
-// import Home from './Pages/Home';
+// import Loading from './Pages/loading';
+import Home from './Pages/Home';
 // import Product from './Pages/product';
 
 // const TextNew = styled.Text`
@@ -20,8 +20,8 @@ import Loading from './Pages/loading';
 const App = () => {
   return (
     <SafeAreaView>
-      <Loading />
-      {/* <Home /> */}
+      {/* <Loading /> */}
+      <Home />
       {/* <Product /> */}
       {/* <Finish /> */}
       {/* <Cart /> */}

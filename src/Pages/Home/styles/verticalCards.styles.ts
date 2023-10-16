@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components/native';
 // ----TopCards------
 
 export const CardTop = styled.TouchableOpacity`
-  margin-left: 35px;
+  margin-left: 32px;
   margin-top: 40px;
   width: 188px;
   height: 245px;
@@ -14,7 +14,7 @@ export const CardTop = styled.TouchableOpacity`
   ${(props: {isFirst: boolean}) =>
     props.isFirst &&
     css`
-      margin-left: 80px;
+      /* margin-left: 80px; */
     `}
 `;
 
