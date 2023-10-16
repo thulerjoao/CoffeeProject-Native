@@ -1,8 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {SafeAreaView} from 'react-native';
-import Cart from './Pages/cart';
+// import Cart from './Pages/cart';
 // import Finish from './Pages/finish';
-// import Loading from './Pages/loading';
+import Loading from './Pages/loading';
 // import Home from './Pages/Home';
 // import Product from './Pages/product';
 
@@ -20,11 +20,11 @@ import Cart from './Pages/cart';
 const App = () => {
   return (
     <SafeAreaView>
-      {/* <Loading /> */}
+      <Loading />
       {/* <Home /> */}
       {/* <Product /> */}
       {/* <Finish /> */}
-      <Cart />
+      {/* <Cart /> */}
     </SafeAreaView>
   );
 };

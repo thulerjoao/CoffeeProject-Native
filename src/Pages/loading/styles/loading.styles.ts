@@ -22,4 +22,12 @@ export const LoadingBar = styled(LinearGradient).attrs({
   margin-top: 20px;
 `;
 
-export const LogoComponent = styled.Image``;
+export const LogoContainer = styled.View`
+  flex-direction: row;
+  justify-content: space-around;
+  width: 170px;
+`;
+
+export const LogoComponent = styled.Image`
+  /* margin: 0 16px; */
+`;
