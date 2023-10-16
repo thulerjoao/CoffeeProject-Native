@@ -17,11 +17,11 @@ const Loading = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setInitialLogo(true);
-    }, 6000);
+    }, 7000);
 
     const pulse = setTimeout(() => {
       setInitialPulse(true);
-    }, 5000);
+    }, 6000);
 
     return () => {
       clearTimeout(timer);
@@ -42,7 +42,7 @@ const Loading = () => {
             animation={!initialPulse ? 'pulse' : 'fadeOut'}
             easing="ease-in-out"
             iterationCount={3}
-            duration={1700}>
+            duration={2000}>
             <LogoComponent source={Cup} />
           </Animatable.View>
         )}
