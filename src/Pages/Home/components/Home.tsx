@@ -164,43 +164,48 @@ const Home: React.FC = () => {
           <TopTitleText>Nossos cafés</TopTitleText>
           <TopTitleFirstSection>
             <TypeButtons
-              selected={selected == 'tradicionais' && true}
+              selected={selected === 'tradicionais' && true}
               onPress={() => setSelected('tradicionais')}>
-              <TypeButtonsText selected={selected == 'tradicionais' && true}>
+              <TypeButtonsText selected={selected === 'tradicionais' && true}>
                 Tradicionais
               </TypeButtonsText>
             </TypeButtons>
             <TypeButtons
-              selected={selected == 'doces' && true}
+              selected={selected === 'doces' && true}
               onPress={() => setSelected('doces')}>
-              <TypeButtonsText selected={selected == 'doces' && true}>
+              <TypeButtonsText selected={selected === 'doces' && true}>
                 Doces
               </TypeButtonsText>
             </TypeButtons>
             <TypeButtons
-              selected={selected == 'especiais' && true}
+              selected={selected === 'especiais' && true}
               onPress={() => setSelected('especiais')}>
-              <TypeButtonsText selected={selected == 'especiais' && true}>
+              <TypeButtonsText selected={selected === 'especiais' && true}>
                 Especiais
               </TypeButtonsText>
             </TypeButtons>
           </TopTitleFirstSection>
         </TopSection>
         <BottomSection>
-          <BottomTitle>Tradicionais</BottomTitle>
-          {data.map(item => {
-            return <HorizontalCard key={item.id} data={item} />;
-          })}
-          <BottomSpace />
-          <BottomTitle>Doces</BottomTitle>
-          {data.map(item => {
-            return <HorizontalCard key={item.id} data={item} />;
-          })}
-          <BottomSpace />
-          <BottomTitle>Especiais</BottomTitle>
-          {data.map(item => {
-            return <HorizontalCard key={item.id} data={item} />;
-          })}
+          {selected === 'tradicionais' && (
+            <BottomTitle>Tradicionais</BottomTitle>
+          )}
+          {selected === 'tradicionais' &&
+            data.map(item => {
+              return <HorizontalCard key={item.id} data={item} />;
+            })}
+          {/* <BottomSpace /> */}
+          {selected === 'doces' && <BottomTitle>Doces</BottomTitle>}
+          {selected === 'doces' &&
+            data.map(item => {
+              return <HorizontalCard key={item.id} data={item} />;
+            })}
+          {/* <BottomSpace /> */}
+          {selected === 'especiais' && <BottomTitle>Especiais</BottomTitle>}
+          {selected === 'especiais' &&
+            data.map(item => {
+              return <HorizontalCard key={item.id} data={item} />;
+            })}
         </BottomSection>
       </BottomComponent>
     </HomeContainer>

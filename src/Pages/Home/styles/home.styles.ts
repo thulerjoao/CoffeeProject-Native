@@ -111,6 +111,7 @@ export const TopTitleFirstSection = styled.View`
   flex-direction: row;
   justify-content: flex-start;
   padding: 15px 0px;
+  /* border-bottom: 5px solid #f3f3f3; */
 `;
 
 export const TopTitleText = styled.Text`
