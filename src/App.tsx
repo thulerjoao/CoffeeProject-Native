@@ -3,8 +3,8 @@ import {SafeAreaView} from 'react-native';
 // import Cart from './Pages/cart';
 // import Finish from './Pages/finish';
 // import Loading from './Pages/loading';
-import Home from './Pages/Home';
-// import Product from './Pages/product';
+// import Home from './Pages/Home';
+import Product from './Pages/product';
 
 // const TextNew = styled.Text`
 //   background-color: red;
@@ -21,8 +21,8 @@ const App = () => {
   return (
     <SafeAreaView>
       {/* <Loading /> */}
-      <Home />
-      {/* <Product /> */}
+      {/* <Home /> */}
+      <Product />
       {/* <Finish /> */}
       {/* <Cart /> */}
     </SafeAreaView>

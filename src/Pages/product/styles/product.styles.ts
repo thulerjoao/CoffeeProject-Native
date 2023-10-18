@@ -71,6 +71,11 @@ export const CupImage = styled.Image`
 `;
 
 // --------BottomPart-----
+interface sizeProps {
+  selectedSize?: boolean;
+  isSelected?: boolean;
+  wasClicked?: boolean;
+}
 
 export const BottomContainer = styled.View`
   padding: 0 30px;
@@ -79,26 +84,39 @@ export const BottomContainer = styled.View`
   box-sizing: border-box;
 `;
 
-export const SelectSizeText = styled.Text`
+export const SelectSizeText = styled.Text<sizeProps>`
   font-size: 13px;
+  font-weight: 400;
+  ${(props: any) =>
+    props.wasClicked === true &&
+    props.isSelected === false &&
+    'color: #c44117;'};
 `;
 
 export const SizeContainer = styled.View`
   flex-direction: row;
   justify-content: space-between;
 `;
-export const SizeButton = styled.TouchableOpacity`
+
+export const SizeButton = styled.TouchableOpacity<sizeProps>`
   background-color: #ededed;
   border-radius: 6px;
   width: 100px;
   height: 40px;
   justify-content: center;
   margin-top: 8px;
+  ${(props: any) => props.selectedSize && 'background-color: white'};
+  ${(props: any) => props.selectedSize && 'border: 1px solid #7f47f8;'};
+  ${(props: any) =>
+    props.wasClicked === true &&
+    props.isSelected === false &&
+    'border: 2px solid #e8baab;'};
 `;
-export const SizeButtonText = styled.Text`
+export const SizeButtonText = styled.Text<sizeProps>`
   width: 100%;
   text-align: center;
   color: black;
+  ${(props: any) => props.selectedSize && 'color: #7f47f8'};
 `;
 
 export const AddContainer = styled.View`
@@ -126,12 +144,17 @@ export const NumberText = styled.Text`
   font-weight: 600;
   text-align: center;
 `;
-export const AddButton = styled.TouchableOpacity`
+
+export const AddButton = styled.TouchableOpacity<sizeProps>`
   width: 179px;
   height: 46px;
   background-color: #4b2994;
   justify-content: center;
   border-radius: 6px;
+  ${(props: any) =>
+    props.wasClicked === true &&
+    props.isSelected === false &&
+    'background-color: #bdb3d2'};
 `;
 export const AddButtonText = styled.Text`
   color: white;

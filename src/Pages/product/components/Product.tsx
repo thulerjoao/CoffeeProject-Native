@@ -31,8 +31,30 @@ import {
   TopContainer,
   TypeText,
 } from '../styles/product.styles';
+import {useState} from 'react';
 
 const Product = () => {
+  const [selectedSize, setSelectedSize] = useState<string>('');
+  const [wasClicked, setWasClicked] = useState<boolean>(false);
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+
+  const handleSelectedSize = (prop: string) => {
+    setSelectedSize(prop);
+    setIsSelected(true);
+    setWasClicked(false);
+  };
+
+  const handleSizeReturn = (prop: string) => {
+    if (selectedSize === prop) {
+      return true;
+    }
+    return false;
+  };
+
+  const checkSelected = () => {
+    setWasClicked(true);
+  };
+
   return (
     <ProductContainer>
       <StatusBar
@@ -57,16 +79,36 @@ const Product = () => {
         <CupImage source={coffee} />
       </TopContainer>
       <BottomContainer>
-        <SelectSizeText>Selecione o tamanho:</SelectSizeText>
+        <SelectSizeText isSelected={isSelected} wasClicked={wasClicked}>
+          Selecione o tamanho:
+        </SelectSizeText>
         <SizeContainer>
-          <SizeButton>
-            <SizeButtonText>114ml</SizeButtonText>
+          <SizeButton
+            isSelected={isSelected}
+            wasClicked={wasClicked}
+            selectedSize={handleSizeReturn('114')}
+            onPress={() => handleSelectedSize('114')}>
+            <SizeButtonText selectedSize={handleSizeReturn('114')}>
+              114ml
+            </SizeButtonText>
           </SizeButton>
-          <SizeButton>
-            <SizeButtonText>140ml</SizeButtonText>
+          <SizeButton
+            isSelected={isSelected}
+            wasClicked={wasClicked}
+            selectedSize={handleSizeReturn('140')}
+            onPress={() => handleSelectedSize('140')}>
+            <SizeButtonText selectedSize={handleSizeReturn('140')}>
+              140ml
+            </SizeButtonText>
           </SizeButton>
-          <SizeButton>
-            <SizeButtonText>227ml</SizeButtonText>
+          <SizeButton
+            isSelected={isSelected}
+            wasClicked={wasClicked}
+            selectedSize={handleSizeReturn('227')}
+            onPress={() => handleSelectedSize('227')}>
+            <SizeButtonText selectedSize={handleSizeReturn('227')}>
+              227ml
+            </SizeButtonText>
           </SizeButton>
         </SizeContainer>
         <AddContainer>
@@ -77,7 +119,10 @@ const Product = () => {
           <MinusAndPlus>
             <MinusAndPlusText>+</MinusAndPlusText>
           </MinusAndPlus>
-          <AddButton>
+          <AddButton
+            isSelected={isSelected}
+            wasClicked={wasClicked}
+            onPress={() => checkSelected()}>
             <AddButtonText>ADICIONAR</AddButtonText>
           </AddButton>
         </AddContainer>
