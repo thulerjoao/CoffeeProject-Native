@@ -7,27 +7,18 @@ import {
   LogoContainer,
 } from '../styles/loading.styles';
 import Cup from '../assets/Cup.png';
-import Logo from '../assets/Logo.png';
+import LogoText from '../assets/LogoText.png';
 import {useEffect, useState} from 'react';
 
 const Loading = () => {
-  const [initialLogo, setInitialLogo] = useState<boolean>(false);
-  const [initialPulse, setInitialPulse] = useState<boolean>(false);
+  const [startEnd, setStartEnd] = useState<boolean>(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setInitialLogo(true);
-    }, 7000);
-
-    const pulse = setTimeout(() => {
-      setInitialPulse(true);
-    }, 6000);
-
-    return () => {
-      clearTimeout(timer);
-      clearTimeout(pulse); // This clears the timer when the component unmounts or when the effect re-runs
-    };
-  }, []);
+  const handleStart = () => {
+    setTimeout(() => {
+      setStartEnd(true);
+    }, 4000);
+  };
+  handleStart();
 
   return (
     <LoadingContainer>
@@ -36,25 +27,25 @@ const Loading = () => {
         barStyle="light-content"
         translucent
       />
-      <LogoContainer>
-        {!initialLogo && (
+      <Animatable.View
+        animation={startEnd ? 'bounceOut' : ''}
+        easing="ease-in-out"
+        duration={2000}>
+        <LogoContainer>
           <Animatable.View
-            animation={!initialPulse ? 'pulse' : 'fadeOut'}
+            animation={'fadeInLeftBig'}
             easing="ease-in-out"
-            iterationCount={3}
-            duration={2000}>
+            duration={1600}>
             <LogoComponent source={Cup} />
           </Animatable.View>
-        )}
-        {initialLogo && (
           <Animatable.Image
-            source={Logo}
-            animation="zoomInUp"
+            source={LogoText}
+            animation={'fadeInRightBig'}
             easing="ease-in-out"
-            duration={1500}
+            duration={1600}
           />
-        )}
-      </LogoContainer>
+        </LogoContainer>
+      </Animatable.View>
       {/* <LoadingBar /> */}
     </LoadingContainer>
   );

@@ -56,7 +56,7 @@ const Finish = () => {
           <Animatable.View
             style={{width: '100%'}}
             animation={'bounceInUp'}
-            duration={1750}>
+            duration={1950}>
             <FinishButtonText>IR PARA A HOME</FinishButtonText>
           </Animatable.View>
         </FinishButton>
