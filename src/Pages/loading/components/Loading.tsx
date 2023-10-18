@@ -8,7 +8,7 @@ import {
 } from '../styles/loading.styles';
 import Cup from '../assets/Cup.png';
 import LogoText from '../assets/LogoText.png';
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 const Loading = () => {
   const [startEnd, setStartEnd] = useState<boolean>(false);
@@ -16,7 +16,7 @@ const Loading = () => {
   const handleStart = () => {
     setTimeout(() => {
       setStartEnd(true);
-    }, 4000);
+    }, 1800);
   };
   handleStart();
 
@@ -28,9 +28,9 @@ const Loading = () => {
         translucent
       />
       <Animatable.View
-        animation={startEnd ? 'bounceOut' : ''}
+        animation={startEnd ? 'jello' : ''}
         easing="ease-in-out"
-        duration={2000}>
+        duration={1200}>
         <LogoContainer>
           <Animatable.View
             animation={'fadeInLeftBig'}
