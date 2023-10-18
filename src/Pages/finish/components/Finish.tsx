@@ -27,7 +27,7 @@ const Finish = () => {
   const handleShowUpButton = () => {
     setTimeout(() => {
       setShowUp(true);
-    }, 2100);
+    }, 1850);
   };
   handleShowUpButton();
 
@@ -55,7 +55,7 @@ const Finish = () => {
         <FinishButton onPress={() => handleClick()}>
           <Animatable.View
             style={{width: '100%'}}
-            animation={'bounceIn'}
+            animation={'bounceInUp'}
             duration={1750}>
             <FinishButtonText>IR PARA A HOME</FinishButtonText>
           </Animatable.View>
