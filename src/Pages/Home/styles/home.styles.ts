@@ -119,21 +119,38 @@ export const TopTitleText = styled.Text`
   color: black;
 `;
 
-export const TypeButtons = styled.TouchableOpacity`
+interface SelectedProps {
+  selected?: boolean;
+}
+
+export const TypeButtons = styled.TouchableOpacity<SelectedProps>`
   margin-right: 10px;
   align-items: center;
   justify-content: center;
   border: 1px solid #7f47f8;
   border-radius: 15px;
+  ${(props: any) => props.selected && 'background-color: #7f47f8'};
 `;
 
-export const TypeButtonsText = styled.Text`
+export const TypeButtonsText = styled.Text<SelectedProps>`
   font-size: 12px;
   font-weight: 700;
   padding: 3px 11px;
   text-align: center;
   color: #4b2994;
+  ${(props: any) => props.selected && 'color: white'};
 `;
+
+// interface RightContainerProps {
+//   screenWidth?: string;
+// }
+
+// export const RightContainer = styled.View<RightContainerProps>`
+//   border-bottom-width: 1px;
+//   border-bottom-color: #ededed;
+//   ${(props: any) =>
+//     props.screenWidth ? `width: ${props.screenWidth}px` : '100%'}
+// `;
 
 export const BottomSection = styled.View`
   width: 100%;

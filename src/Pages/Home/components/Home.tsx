@@ -33,6 +33,7 @@ import Coffee from '../assets/Coffee.png';
 import Coffee01 from '../assets/Coffee01.png';
 import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
+import {useState} from 'react';
 
 interface CoffeeItem {
   id: string;
@@ -107,8 +108,7 @@ const Home: React.FC = () => {
     index?: number;
     parallaxProps?: any;
   }) => {
-    // Calcula o fator de escala com base na posição do item no carrossel
-    const scale = (parallaxProps?.style?.transform[1]?.scale || 1) * 0.5;
+    const scale = (parallaxProps?.style?.transform[0]?.scale || 1) * 0.5;
 
     const cardStyle = {transform: [{scale}], opacity: 1};
 
@@ -116,6 +116,8 @@ const Home: React.FC = () => {
   };
 
   const screenWidth = Dimensions.get('window').width;
+
+  const [selected, setSelected] = useState<string>('tradicionais');
 
   return (
     <HomeContainer>
@@ -161,14 +163,26 @@ const Home: React.FC = () => {
         <TopSection>
           <TopTitleText>Nossos cafés</TopTitleText>
           <TopTitleFirstSection>
-            <TypeButtons>
-              <TypeButtonsText>Tradicionais</TypeButtonsText>
+            <TypeButtons
+              selected={selected == 'tradicionais' && true}
+              onPress={() => setSelected('tradicionais')}>
+              <TypeButtonsText selected={selected == 'tradicionais' && true}>
+                Tradicionais
+              </TypeButtonsText>
             </TypeButtons>
-            <TypeButtons>
-              <TypeButtonsText>Doces</TypeButtonsText>
+            <TypeButtons
+              selected={selected == 'doces' && true}
+              onPress={() => setSelected('doces')}>
+              <TypeButtonsText selected={selected == 'doces' && true}>
+                Doces
+              </TypeButtonsText>
             </TypeButtons>
-            <TypeButtons>
-              <TypeButtonsText>Especiais</TypeButtonsText>
+            <TypeButtons
+              selected={selected == 'especiais' && true}
+              onPress={() => setSelected('especiais')}>
+              <TypeButtonsText selected={selected == 'especiais' && true}>
+                Especiais
+              </TypeButtonsText>
             </TypeButtons>
           </TopTitleFirstSection>
         </TopSection>
