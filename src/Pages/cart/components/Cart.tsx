@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar} from 'react-native';
+import {StatusBar, TouchableOpacity} from 'react-native';
 import {
   BackArrowImage,
   CardsContainer,
@@ -8,6 +8,11 @@ import {
   ConfirmButton,
   ConfirmButtonText,
   FooterComponent,
+  IfEmptyCards,
+  IfEmptyCardsButtom,
+  IfEmptyCardsButtomText,
+  IfEmptyCardsImage,
+  IfEmptyCardsText,
   InvisibleComponent,
   TopContainer,
   ValueContainer,
@@ -19,6 +24,7 @@ import BlackBackArrow from '../assets/BlackBackArrow.png';
 import Card from './Card';
 import TopCup01 from '../assets/TopCup01.png';
 import TopCup02 from '../assets/TopCup02.png';
+import whiteCart from '../assets/whiteCart.png';
 
 const Cart = () => {
   const data = [
@@ -38,14 +44,14 @@ const Cart = () => {
       size: '227ml',
       price: 'R$ 9,90',
     },
-    {
-      id: '3',
-      imageSource: TopCup01,
-      type: 'Tradicional',
-      title: 'Irlandês',
-      size: '227ml',
-      price: 'R$ 9,90',
-    },
+    // {
+    //   id: '3',
+    //   imageSource: TopCup01,
+    //   type: 'Tradicional',
+    //   title: 'Irlandês',
+    //   size: '227ml',
+    //   price: 'R$ 9,90',
+    // },
     // {
     //   id: '4',
     //   isFirst: true as true,
@@ -81,24 +87,38 @@ const Cart = () => {
         translucent
       />
       <TopContainer>
-        <BackArrowImage source={BlackBackArrow} />
+        <TouchableOpacity>
+          <BackArrowImage source={BlackBackArrow} />
+        </TouchableOpacity>
         <CartTitle>Carrinho</CartTitle>
         <InvisibleComponent />
       </TopContainer>
       <CardsContainer>
-        {data.map(element => {
-          return <Card element={element} key={element.id} />;
-        })}
+        {data.length === 0 && (
+          <IfEmptyCards>
+            <IfEmptyCardsImage source={whiteCart} />
+            <IfEmptyCardsText>Seu carrinho está vazio</IfEmptyCardsText>
+            <IfEmptyCardsButtom>
+              <IfEmptyCardsButtomText>VER CATÁLOGO</IfEmptyCardsButtomText>
+            </IfEmptyCardsButtom>
+          </IfEmptyCards>
+        )}
+        {data.length !== 0 &&
+          data.map(element => {
+            return <Card element={element} key={element.id} />;
+          })}
       </CardsContainer>
-      <FooterComponent>
-        <ValueContainer>
-          <ValueText>Valor total</ValueText>
-          <ValueNumber>R$ 9,90</ValueNumber>
-        </ValueContainer>
-        <ConfirmButton>
-          <ConfirmButtonText>CONFIRMAR PEDIDO</ConfirmButtonText>
-        </ConfirmButton>
-      </FooterComponent>
+      {data.length !== 0 && (
+        <FooterComponent>
+          <ValueContainer>
+            <ValueText>Valor total</ValueText>
+            <ValueNumber>R$ 9,90</ValueNumber>
+          </ValueContainer>
+          <ConfirmButton>
+            <ConfirmButtonText>CONFIRMAR PEDIDO</ConfirmButtonText>
+          </ConfirmButton>
+        </FooterComponent>
+      )}
     </CartContainer>
   );
 };

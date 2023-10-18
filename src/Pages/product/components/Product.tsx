@@ -1,8 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-import {StatusBar} from 'react-native';
+import {StatusBar, TouchableOpacity} from 'react-native';
 import coffee from '../assets/coffee.png';
-import purpleCart from '../assets/purpleCart.png';
+// import purpleCart from '../assets/purpleCart.png';
+import whiteCart from '../assets/whiteCart.png';
 import whiteBackArrow from '../assets/whiteBackArrow.png';
 import Smoke from '../assets/Smoke.png';
 
@@ -37,6 +38,7 @@ const Product = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
+  const [amount, setAmount] = useState<number>(1);
 
   const handleSelectedSize = (prop: string) => {
     setSelectedSize(prop);
@@ -55,6 +57,16 @@ const Product = () => {
     setWasClicked(true);
   };
 
+  const handleIncrease = () => {
+    const newAmount = amount + 1;
+    setAmount(newAmount);
+  };
+
+  const handleDecrease = () => {
+    const newAmount = amount - 1;
+    amount > 1 && setAmount(newAmount);
+  };
+
   return (
     <ProductContainer>
       <StatusBar
@@ -64,8 +76,12 @@ const Product = () => {
       />
       <TopContainer>
         <BackAndCart>
-          <BackArrow source={whiteBackArrow} />
-          <CartImage source={purpleCart} />
+          <TouchableOpacity>
+            <BackArrow source={whiteBackArrow} />
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <CartImage source={whiteCart} />
+          </TouchableOpacity>
         </BackAndCart>
         <TypeText>Especial</TypeText>
         <TitleAndPrice>
@@ -112,11 +128,11 @@ const Product = () => {
           </SizeButton>
         </SizeContainer>
         <AddContainer>
-          <MinusAndPlus>
+          <MinusAndPlus onPress={() => handleDecrease()}>
             <MinusAndPlusText>--</MinusAndPlusText>
           </MinusAndPlus>
-          <NumberText>1</NumberText>
-          <MinusAndPlus>
+          <NumberText>{amount}</NumberText>
+          <MinusAndPlus onPress={() => handleIncrease()}>
             <MinusAndPlusText>+</MinusAndPlusText>
           </MinusAndPlus>
           <AddButton

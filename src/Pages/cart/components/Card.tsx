@@ -21,6 +21,7 @@ import {
 
 import SmallTrash from '../assets/SmallTrash.png';
 import BigTrashIcon from '../assets/BigTrashIcon.png';
+import {useState} from 'react';
 
 // {
 //     id: '6',
@@ -33,6 +34,22 @@ import BigTrashIcon from '../assets/BigTrashIcon.png';
 
 const Card = ({element}: any) => {
   const screenWidth = Dimensions.get('window').width;
+
+  const [amount, setAmount] = useState<number>(1);
+
+  const handleIncrease = () => {
+    const newAmount = amount + 1;
+    amount < 9 && setAmount(newAmount);
+  };
+
+  const handleDecrease = () => {
+    const newAmount = amount - 1;
+    amount > 1 && setAmount(newAmount);
+  };
+
+  const handleRestartAmount = () => {
+    setAmount(1);
+  };
 
   return (
     <BottomContainer
@@ -51,11 +68,15 @@ const Card = ({element}: any) => {
               <SizeDescription>{element.size}</SizeDescription>
               <BottominternalContainer>
                 <MinusAndPlusContainer>
-                  <SignText>--</SignText>
-                  <NumerText>1</NumerText>
-                  <SignText>+</SignText>
+                  <TouchableOpacity onPress={() => handleDecrease()}>
+                    <SignText>--</SignText>
+                  </TouchableOpacity>
+                  <NumerText>{amount}</NumerText>
+                  <TouchableOpacity onPress={() => handleIncrease()}>
+                    <SignText>+</SignText>
+                  </TouchableOpacity>
                 </MinusAndPlusContainer>
-                <LittleTrashContainer>
+                <LittleTrashContainer onPress={() => handleRestartAmount()}>
                   <LittleTrash source={SmallTrash} />
                 </LittleTrashContainer>
               </BottominternalContainer>

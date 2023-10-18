@@ -93,7 +93,7 @@ export const NumerText = styled.Text`
   font-weight: 600;
   text-align: center;
 `;
-export const LittleTrashContainer = styled.View`
+export const LittleTrashContainer = styled.TouchableOpacity`
   background-color: #ededed;
   height: 36px;
   width: 36px;
@@ -103,7 +103,3 @@ export const LittleTrashContainer = styled.View`
   justify-content: center;
 `;
 export const LittleTrash = styled.Image``;
-function calc(arg0: any) {
-  throw new Error('Function not implemented.');
-}
-

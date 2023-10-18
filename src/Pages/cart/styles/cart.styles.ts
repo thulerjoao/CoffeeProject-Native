@@ -31,6 +31,36 @@ export const CardsContainer = styled.ScrollView`
   box-sizing: border-box;
 `;
 
+export const IfEmptyCards = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const IfEmptyCardsImage = styled.Image`
+  margin-top: 70px;
+`;
+
+export const IfEmptyCardsText = styled.Text`
+  margin-top: 13px;
+`;
+
+export const IfEmptyCardsButtom = styled.TouchableOpacity`
+  background-color: #4b2994;
+  width: 247px;
+  height: 46px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-top: 35px;
+`;
+
+export const IfEmptyCardsButtomText = styled.Text`
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+`;
+
 // -----
 
 export const FooterComponent = styled.View`
