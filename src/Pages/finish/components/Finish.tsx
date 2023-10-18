@@ -1,5 +1,8 @@
+/* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {StatusBar} from 'react-native';
+import * as Animatable from 'react-native-animatable';
+
 import {
   FinishBikeImage,
   FinishButton,
@@ -10,8 +13,24 @@ import {
 } from '../styles/finish.styles';
 
 import FinishBike from '../assets/FinishBike.png';
+import {useEffect, useState} from 'react';
 
 const Finish = () => {
+  const [wasClicked, setWasClicked] = useState<boolean>(false);
+  const [showUp, setShowUp] = useState<boolean>(false);
+
+  useEffect(() => {}, [wasClicked]);
+  const handleClick = () => {
+    setWasClicked(!wasClicked);
+  };
+
+  const handleShowUpButton = () => {
+    setTimeout(() => {
+      setShowUp(true);
+    }, 2100);
+  };
+  handleShowUpButton();
+
   return (
     <FinishContainer>
       <StatusBar
@@ -19,14 +38,29 @@ const Finish = () => {
         barStyle="dark-content"
         translucent
       />
-      <FinishBikeImage source={FinishBike} />
+      <FinishBikeImage>
+        <Animatable.Image
+          source={FinishBike}
+          animation={wasClicked === false ? 'fadeInLeftBig' : 'fadeOutRightBig'}
+          duration={1750}
+        />
+      </FinishBikeImage>
+
+      {/* <FinishBikeImage source={FinishBike} /> */}
       <OrderConfirmedText>Uhu! Pedido confirmado</OrderConfirmedText>
       <FinishMessage>
         Agora é só aguardar que logo o café chegará até você!
       </FinishMessage>
-      <FinishButton>
-        <FinishButtonText>IR PARA A HOME</FinishButtonText>
-      </FinishButton>
+      {showUp && (
+        <FinishButton onPress={() => handleClick()}>
+          <Animatable.View
+            style={{width: '100%'}}
+            animation={'bounceIn'}
+            duration={1750}>
+            <FinishButtonText>IR PARA A HOME</FinishButtonText>
+          </Animatable.View>
+        </FinishButton>
+      )}
     </FinishContainer>
   );
 };

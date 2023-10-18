@@ -6,7 +6,7 @@ export const FinishContainer = styled.View`
   align-items: center;
 `;
 
-export const FinishBikeImage = styled.Image`
+export const FinishBikeImage = styled.View`
   margin-bottom: 40px;
   margin-top: 40%;
 `;

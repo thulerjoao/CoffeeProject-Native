@@ -59,7 +59,7 @@ const Product = () => {
 
   const handleIncrease = () => {
     const newAmount = amount + 1;
-    setAmount(newAmount);
+    amount < 9 && setAmount(newAmount);
   };
 
   const handleDecrease = () => {
