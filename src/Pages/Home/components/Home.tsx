@@ -5,7 +5,6 @@ import Carousel from 'react-native-snap-carousel';
 import {
   BottomComponent,
   BottomSection,
-  BottomSpace,
   BottomTitle,
   CoffeeImage,
   HomeContainer,
@@ -35,11 +34,10 @@ import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
 import {useState} from 'react';
 import {CoffeeItem} from '../../../globalTypes';
-import {useSelector} from 'react-redux';
-import {RootState} from '../../../store';
+import {useProductsReducer} from '../../../store/reduces/productsReducer/useProductsReducer';
 
 const Home: React.FC = () => {
-  const {list} = useSelector((state: RootState) => state.productsReducer);
+  const {productList} = useProductsReducer();
 
   const renderItem = ({
     item,
@@ -90,7 +88,7 @@ const Home: React.FC = () => {
       </TopComponent>
       <HorizontalList>
         <Carousel
-          data={list}
+          data={productList}
           renderItem={renderItem}
           sliderWidth={screenWidth} // Largura do carrossel
           itemWidth={220} // Largura de cada item do carrossel
@@ -133,19 +131,22 @@ const Home: React.FC = () => {
             <BottomTitle>Tradicionais</BottomTitle>
           )}
           {selected === 'tradicionais' &&
-            list.map(item => {
+            productList &&
+            productList.map(item => {
               return <HorizontalCard key={item.id} data={item} />;
             })}
           {/* <BottomSpace /> */}
           {selected === 'doces' && <BottomTitle>Doces</BottomTitle>}
           {selected === 'doces' &&
-            list.map(item => {
+            productList &&
+            productList.map(item => {
               return <HorizontalCard key={item.id} data={item} />;
             })}
           {/* <BottomSpace /> */}
           {selected === 'especiais' && <BottomTitle>Especiais</BottomTitle>}
           {selected === 'especiais' &&
-            list.map(item => {
+            productList &&
+            productList.map(item => {
               return <HorizontalCard key={item.id} data={item} />;
             })}
         </BottomSection>

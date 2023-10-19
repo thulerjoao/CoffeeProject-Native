@@ -1,6 +1,7 @@
 import Coffee01 from '../Pages/Home/assets/Coffee01.png';
+import {CoffeeItem} from '../globalTypes';
 
-export const producsData = [
+export const productData: CoffeeItem[] = [
   {
     id: '1',
     isFirst: true as true,

@@ -3,11 +3,11 @@ import {SafeAreaView} from 'react-native';
 import store from './store';
 import {Provider} from 'react-redux';
 
-// import Cart from './Pages/cart';
-// import Finish from './Pages/finish';
-// import Loading from './Pages/loading';
+import Cart from './Pages/cart';
+import Finish from './Pages/finish';
+import Loading from './Pages/loading';
 import Home from './Pages/Home';
-// import Product from './Pages/product';
+import Product from './Pages/product';
 
 // const TextNew = styled.Text`
 //   background-color: red;
