@@ -30,74 +30,16 @@ import Icon from '../assets/Icon.png';
 import Cart from '../assets/Cart.png';
 import Glass from '../assets/Glass.png';
 import Coffee from '../assets/Coffee.png';
-import Coffee01 from '../assets/Coffee01.png';
+// import Coffee01 from '../assets/Coffee01.png';
 import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
 import {useState} from 'react';
-
-interface CoffeeItem {
-  id: string;
-  isFirst?: boolean;
-  imageSource: string;
-  type: string;
-  title: string;
-  description: string;
-  price: string;
-}
+import {CoffeeItem} from '../../../globalTypes';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../../store';
 
 const Home: React.FC = () => {
-  const data: CoffeeItem[] = [
-    {
-      id: '1',
-      isFirst: true as true,
-      imageSource: Coffee01,
-      type: 'Tradicional',
-      title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremosa',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '2',
-      imageSource: Coffee01,
-      type: 'Tradicional',
-      title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremosa',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '3',
-      imageSource: Coffee01,
-      type: 'Tradicional',
-      title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremosa',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '4',
-      isFirst: true as true,
-      imageSource: Coffee01,
-      type: 'Tradicional',
-      title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremosa',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '5',
-      imageSource: Coffee01,
-      type: 'Tradicional',
-      title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremosa',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '6',
-      imageSource: Coffee01,
-      type: 'Tradicional',
-      title: 'Latte',
-      description: 'Café expresso com o dobro de leite e espuma cremose',
-      price: 'R$ 9,90',
-    },
-  ];
+  const {list} = useSelector((state: RootState) => state.productsReducer);
 
   const renderItem = ({
     item,
@@ -148,7 +90,7 @@ const Home: React.FC = () => {
       </TopComponent>
       <HorizontalList>
         <Carousel
-          data={data}
+          data={list}
           renderItem={renderItem}
           sliderWidth={screenWidth} // Largura do carrossel
           itemWidth={220} // Largura de cada item do carrossel
@@ -191,19 +133,19 @@ const Home: React.FC = () => {
             <BottomTitle>Tradicionais</BottomTitle>
           )}
           {selected === 'tradicionais' &&
-            data.map(item => {
+            list.map(item => {
               return <HorizontalCard key={item.id} data={item} />;
             })}
           {/* <BottomSpace /> */}
           {selected === 'doces' && <BottomTitle>Doces</BottomTitle>}
           {selected === 'doces' &&
-            data.map(item => {
+            list.map(item => {
               return <HorizontalCard key={item.id} data={item} />;
             })}
           {/* <BottomSpace /> */}
           {selected === 'especiais' && <BottomTitle>Especiais</BottomTitle>}
           {selected === 'especiais' &&
-            data.map(item => {
+            list.map(item => {
               return <HorizontalCard key={item.id} data={item} />;
             })}
         </BottomSection>

@@ -28,9 +28,9 @@ const Loading = () => {
         translucent
       />
       <Animatable.View
-        animation={startEnd ? 'jello' : ''}
+        animation={startEnd ? 'tada' : ''}
         easing="ease-in-out"
-        duration={1200}>
+        duration={1000}>
         <LogoContainer>
           <Animatable.View
             animation={'fadeInLeftBig'}
