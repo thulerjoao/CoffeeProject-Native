@@ -9,9 +9,17 @@ import {
 import Cup from '../assets/Cup.png';
 import LogoText from '../assets/LogoText.png';
 import {useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
-const Loading = () => {
+const Loading: React.FC = () => {
   const [startEnd, setStartEnd] = useState<boolean>(false);
+  const {navigate} = useNavigation();
+
+  const goToHome = () => {
+    setTimeout(() => {
+      navigate('Home');
+    }, 3400);
+  };
 
   const handleStart = () => {
     setTimeout(() => {
@@ -19,6 +27,7 @@ const Loading = () => {
     }, 1800);
   };
   handleStart();
+  goToHome();
 
   return (
     <LoadingContainer>

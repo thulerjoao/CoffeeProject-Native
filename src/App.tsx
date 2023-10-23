@@ -9,6 +9,8 @@ import Loading from './Pages/loading';
 import Home from './Pages/Home';
 import Product from './Pages/product';
 import store from './redux/store';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // const TextNew = styled.Text`
 //   background-color: red;
@@ -21,18 +23,25 @@ import store from './redux/store';
 //   },
 // });
 
-// const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <Provider store={store}>
-      <SafeAreaView>
-        {/* <Loading /> */}
-        {/* <Home /> */}
-        {/* <Product /> */}
-        {/* <Finish /> */}
-        <Cart />
-      </SafeAreaView>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="Loading"
+            component={Loading}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{headerShown: false}}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
     </Provider>
   );
 };
