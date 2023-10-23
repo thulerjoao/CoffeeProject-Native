@@ -4,6 +4,7 @@ export interface CoffeeItem {
   imageSource: string;
   type: string;
   title: string;
-  description: string;
+  description?: string;
+  size?: string;
   price: string;
 }

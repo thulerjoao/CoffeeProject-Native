@@ -22,62 +22,11 @@ import {
 
 import BlackBackArrow from '../assets/BlackBackArrow.png';
 import Card from './Card';
-import TopCup01 from '../assets/TopCup01.png';
-import TopCup02 from '../assets/TopCup02.png';
 import whiteCart from '../assets/whiteCart.png';
+import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
 
 const Cart = () => {
-  const data = [
-    // {
-    //   id: '1',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '2',
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '3',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '4',
-    //   isFirst: true as true,
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '5',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '6',
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-  ];
+  const {cartList} = useCartReducer();
 
   return (
     <CartContainer>
@@ -94,7 +43,7 @@ const Cart = () => {
         <InvisibleComponent />
       </TopContainer>
       <CardsContainer>
-        {data.length === 0 && (
+        {cartList.length === 0 && (
           <IfEmptyCards>
             <IfEmptyCardsImage source={whiteCart} />
             <IfEmptyCardsText>Seu carrinho está vazio</IfEmptyCardsText>
@@ -103,12 +52,12 @@ const Cart = () => {
             </IfEmptyCardsButtom>
           </IfEmptyCards>
         )}
-        {data.length !== 0 &&
-          data.map(element => {
+        {cartList.length !== 0 &&
+          cartList.map(element => {
             return <Card element={element} key={element.id} />;
           })}
       </CardsContainer>
-      {data.length !== 0 && (
+      {cartList.length !== 0 && (
         <FooterComponent>
           <ValueContainer>
             <ValueText>Valor total</ValueText>

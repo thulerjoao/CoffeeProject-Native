@@ -1,6 +1,6 @@
 /* eslint-disable react/react-in-jsx-scope */
 import {SafeAreaView} from 'react-native';
-import store from './store';
+
 import {Provider} from 'react-redux';
 
 import Cart from './Pages/cart';
@@ -8,6 +8,7 @@ import Finish from './Pages/finish';
 import Loading from './Pages/loading';
 import Home from './Pages/Home';
 import Product from './Pages/product';
+import store from './redux/store';
 
 // const TextNew = styled.Text`
 //   background-color: red;
@@ -27,10 +28,10 @@ const App = () => {
     <Provider store={store}>
       <SafeAreaView>
         {/* <Loading /> */}
-        <Home />
+        {/* <Home /> */}
         {/* <Product /> */}
         {/* <Finish /> */}
-        {/* <Cart /> */}
+        <Cart />
       </SafeAreaView>
     </Provider>
   );

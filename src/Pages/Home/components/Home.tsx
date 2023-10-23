@@ -34,7 +34,7 @@ import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
 import {useState} from 'react';
 import {CoffeeItem} from '../../../globalTypes';
-import {useProductsReducer} from '../../../store/reduces/productsReducer/useProductsReducer';
+import {useProductsReducer} from '../../../redux/reduces/productsReducer/useProductsReducer';
 
 const Home: React.FC = () => {
   const {productList} = useProductsReducer();
