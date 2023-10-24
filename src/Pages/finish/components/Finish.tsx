@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar, TouchableOpacity} from 'react-native';
+import {StatusBar} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import {

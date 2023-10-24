@@ -45,20 +45,17 @@ const Home: React.FC = () => {
   const {productList} = useProductsReducer();
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
 
-  const renderItem = ({
-    item,
-    index,
-    parallaxProps,
-  }: {
-    item?: CoffeeItem;
-    index?: number;
-    parallaxProps?: any;
-  }) => {
-    const scale = (parallaxProps?.style?.transform[0]?.scale || 1) * 0.5;
+  type Props = {
+    item: CoffeeItem;
+    index: number;
+  };
 
-    const cardStyle = {transform: [{scale}], opacity: 1};
+  const renderItem = ({item, index}: Props) => {
+    // const scale = (parallaxProps?.style?.transform[0]?.scale || 1) * 0.5;
 
-    return <VerticalCard key={index} data={item} style={cardStyle} />;
+    // const cardStyle = {transform: [{scale}], opacity: 1};
+
+    return <VerticalCard key={index} data={item} />;
   };
 
   const screenWidth = Dimensions.get('window').width;
@@ -99,15 +96,17 @@ const Home: React.FC = () => {
       </TopComponent>
       <HorizontalList>
         <Carousel
+          autoplay={true}
+          loop={true}
           data={productList}
           renderItem={renderItem}
           sliderWidth={screenWidth} // Largura do carrossel
-          itemWidth={220} // Largura de cada item do carrossel
+          itemWidth={215} // Largura de cada item do carrossel
           layout={'default'} // Tipo de layout (pode ser 'default', 'stack', 'tinder', etc.)
           layoutCardOffset={0} // Espaçamento entre os cartões
           horizontal // Para um carrossel horizontal
           showsHorizontalScrollIndicator={false} // Ocultar a barra de rolagem horizontal
-          activeSlideAlignment={'start'} // Alinhar o slide ativo à esquerda
+          activeSlideAlignment={'center'}
         />
       </HorizontalList>
       <BottomComponent>
