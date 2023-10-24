@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
-import {Dimensions, StatusBar} from 'react-native';
+import {Dimensions, StatusBar, TouchableOpacity} from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {
   BottomComponent,
@@ -35,9 +35,15 @@ import HorizontalCard from './HorizontalCard';
 import {useState} from 'react';
 import {CoffeeItem} from '../../../globalTypes';
 import {useProductsReducer} from '../../../redux/reduces/productsReducer/useProductsReducer';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const Home: React.FC = () => {
   const {productList} = useProductsReducer();
+  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
 
   const renderItem = ({
     item,
@@ -62,7 +68,7 @@ const Home: React.FC = () => {
   return (
     <HomeContainer>
       <StatusBar
-        backgroundColor="transparent"
+        backgroundColor="#00000030"
         barStyle="light-content"
         translucent
       />
@@ -70,7 +76,12 @@ const Home: React.FC = () => {
         <Location>
           <LocationIcon source={Icon} />
           <LocationText>Rio de Janeiro, RJ</LocationText>
-          <LocationIcon source={Cart} />
+          <TouchableOpacity
+            onPress={() => {
+              navigate('Cart');
+            }}>
+            <LocationIcon source={Cart} />
+          </TouchableOpacity>
         </Location>
         <Search>
           <SearchText>

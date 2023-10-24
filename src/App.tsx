@@ -40,6 +40,21 @@ const App = () => {
             component={Home}
             options={{headerShown: false}}
           />
+          <Stack.Screen
+            name="Cart"
+            component={Cart}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Product"
+            component={Product}
+            options={{headerShown: false}}
+          />
+          <Stack.Screen
+            name="Finish"
+            component={Finish}
+            options={{headerShown: false}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

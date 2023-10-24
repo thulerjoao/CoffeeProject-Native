@@ -9,22 +9,22 @@ interface cartListType {
 
 const initialState: cartListType = {
   cartList: [
-    // {
-    //   id: '1',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '2',
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
+    {
+      id: '1',
+      imageSource: TopCup01,
+      type: 'Tradicional',
+      title: 'Irlandês',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
+    {
+      id: '2',
+      imageSource: TopCup02,
+      type: 'Tradicional',
+      title: 'Capuccino',
+      size: '227ml',
+      price: 'R$ 9,90',
+    },
     // {
     //   id: '3',
     //   imageSource: TopCup01,

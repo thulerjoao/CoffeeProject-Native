@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar} from 'react-native';
+import {StatusBar, TouchableOpacity} from 'react-native';
 import * as Animatable from 'react-native-animatable';
 
 import {
@@ -14,14 +14,24 @@ import {
 
 import FinishBike from '../assets/FinishBike.png';
 import {useEffect, useState} from 'react';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const Finish = () => {
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const [showUp, setShowUp] = useState<boolean>(false);
 
+  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+
   useEffect(() => {}, [wasClicked]);
   const handleClick = () => {
     setWasClicked(!wasClicked);
+    setTimeout(() => {
+      navigate('Home');
+    }, 1200);
   };
 
   const handleShowUpButton = () => {

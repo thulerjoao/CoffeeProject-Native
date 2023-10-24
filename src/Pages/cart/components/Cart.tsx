@@ -24,9 +24,15 @@ import BlackBackArrow from '../assets/BlackBackArrow.png';
 import Card from './Card';
 import whiteCart from '../assets/whiteCart.png';
 import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const Cart = () => {
   const {cartList} = useCartReducer();
+  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
 
   return (
     <CartContainer>
@@ -36,7 +42,7 @@ const Cart = () => {
         translucent
       />
       <TopContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigate('Home')}>
           <BackArrowImage source={BlackBackArrow} />
         </TouchableOpacity>
         <CartTitle>Carrinho</CartTitle>
@@ -47,7 +53,7 @@ const Cart = () => {
           <IfEmptyCards>
             <IfEmptyCardsImage source={whiteCart} />
             <IfEmptyCardsText>Seu carrinho está vazio</IfEmptyCardsText>
-            <IfEmptyCardsButtom>
+            <IfEmptyCardsButtom onPress={() => navigate('Home')}>
               <IfEmptyCardsButtomText>VER CATÁLOGO</IfEmptyCardsButtomText>
             </IfEmptyCardsButtom>
           </IfEmptyCards>
@@ -63,7 +69,7 @@ const Cart = () => {
             <ValueText>Valor total</ValueText>
             <ValueNumber>R$ 9,90</ValueNumber>
           </ValueContainer>
-          <ConfirmButton>
+          <ConfirmButton onPress={() => navigate('Finish')}>
             <ConfirmButtonText>CONFIRMAR PEDIDO</ConfirmButtonText>
           </ConfirmButton>
         </FooterComponent>

@@ -1,4 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import {
   CardBottom,
   CardBottomImage,
@@ -9,8 +10,9 @@ import {
 } from '../styles/horizontalCards.styles';
 
 const HorizontalCard = ({data}: any) => {
+  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
   return (
-    <CardBottom>
+    <CardBottom onPress={()=>navigate('Product')}>
       <CardBottomImage source={data.imageSource} />
       <CardBottomTexts>
         <CardBottomTitle>{data.title}</CardBottomTitle>

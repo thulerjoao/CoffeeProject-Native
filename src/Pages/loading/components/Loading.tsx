@@ -9,11 +9,15 @@ import {
 import Cup from '../assets/Cup.png';
 import LogoText from '../assets/LogoText.png';
 import {useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const Loading: React.FC = () => {
   const [startEnd, setStartEnd] = useState<boolean>(false);
-  const {navigate} = useNavigation();
+  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
 
   const goToHome = () => {
     setTimeout(() => {

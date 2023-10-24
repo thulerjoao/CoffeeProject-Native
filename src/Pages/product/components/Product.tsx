@@ -33,12 +33,18 @@ import {
   TypeText,
 } from '../styles/product.styles';
 import {useState} from 'react';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const Product = () => {
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(1);
+  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
 
   const handleSelectedSize = (prop: string) => {
     setSelectedSize(prop);
@@ -76,10 +82,10 @@ const Product = () => {
       />
       <TopContainer>
         <BackAndCart>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate('Home')}>
             <BackArrow source={whiteBackArrow} />
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigate('Cart')}>
             <CartImage source={whiteCart} />
           </TouchableOpacity>
         </BackAndCart>
