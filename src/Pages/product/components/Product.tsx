@@ -6,6 +6,7 @@ import coffee from '../assets/coffee.png';
 import whiteCart from '../assets/whiteCart.png';
 import whiteBackArrow from '../assets/whiteBackArrow.png';
 import Smoke from '../assets/Smoke.png';
+import {RouteProp, useRoute} from '@react-navigation/native';
 
 import {
   AddButton,
@@ -38,8 +39,17 @@ import {
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {productData} from '../../../globalMoked';
+// import {productData} from '../../../globalMoked';
+
+export interface ProductPageParams {
+  productId?: string;
+}
 
 const Product = () => {
+  const route = useRoute<RouteProp<Record<string, ProductPageParams>>>();
+  const {productId} = route.params;
+  const product = productData.find(element => element.id === productId);
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
@@ -89,14 +99,12 @@ const Product = () => {
             <CartImage source={whiteCart} />
           </TouchableOpacity>
         </BackAndCart>
-        <TypeText>Especial</TypeText>
+        <TypeText>{product?.type}</TypeText>
         <TitleAndPrice>
-          <MainTitle>Irlandês</MainTitle>
-          <Price>R$ 9,90</Price>
+          <MainTitle>{product?.title}</MainTitle>
+          <Price>{product?.price}</Price>
         </TitleAndPrice>
-        <Description>
-          Bebida a base de café, uísque irlandês, açúcar e chantilly
-        </Description>
+        <Description>{product?.description}</Description>
         <SmokeImage source={Smoke} />
         <CupImage source={coffee} />
       </TopContainer>

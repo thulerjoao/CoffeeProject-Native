@@ -8,3 +8,11 @@ export interface CoffeeItem {
   size?: string;
   price: string;
 }
+
+export interface CartItem {
+  id: string;
+  size: string;
+  amount: number;
+  productId: string;
+  price: string;
+}

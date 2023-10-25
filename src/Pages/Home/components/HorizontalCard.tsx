@@ -15,8 +15,9 @@ import {
 
 const HorizontalCard = ({data}: any) => {
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const productId = data.id;
   return (
-    <CardBottom onPress={() => navigate('Product')}>
+    <CardBottom onPress={() => navigate('Product', {productId})}>
       <CardBottomImage source={data.imageSource} />
       <CardBottomTexts>
         <CardBottomTitle>{data.title}</CardBottomTitle>

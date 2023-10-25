@@ -1,30 +1,38 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {CoffeeItem} from '../../../globalTypes';
-import TopCup01 from '../../../Pages/cart/assets/TopCup01.png';
-import TopCup02 from '../../../Pages/cart/assets/TopCup02.png';
+import {CartItem} from '../../../globalTypes';
 
 interface cartListType {
-  cartList: CoffeeItem[];
+  cartList: CartItem[];
 }
+
+// const cart: any = [
+//   {
+//     id: '1',
+//     size: '227',
+//     amount: 1,
+//     productId: '1',
+//     price: 9.9,
+//   },
+// ];
 
 const initialState: cartListType = {
   cartList: [
-    {
-      id: '1',
-      imageSource: TopCup01,
-      type: 'Tradicional',
-      title: 'Irlandês',
-      size: '227ml',
-      price: 'R$ 9,90',
-    },
-    {
-      id: '2',
-      imageSource: TopCup02,
-      type: 'Tradicional',
-      title: 'Capuccino',
-      size: '227ml',
-      price: 'R$ 9,90',
-    },
+    // {
+    //   id: '1',
+    //   imageSource: TopCup01,
+    //   type: 'Tradicional',
+    //   title: 'Irlandês',
+    //   size: '227ml',
+    //   price: 'R$ 9,90',
+    // },
+    // {
+    //   id: '2',
+    //   imageSource: TopCup02,
+    //   type: 'Tradicional',
+    //   title: 'Capuccino',
+    //   size: '227ml',
+    //   price: 'R$ 9,90',
+    // },
     // {
     //   id: '3',
     //   imageSource: TopCup01,
