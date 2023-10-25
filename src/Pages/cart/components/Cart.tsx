@@ -60,7 +60,7 @@ const Cart = () => {
         )}
         {cartList.length !== 0 &&
           cartList.map(element => {
-            return <Card element={element} key={element.id} />;
+            return <Card prop={element} key={element.id} />;
           })}
       </CardsContainer>
       {cartList.length !== 0 && (

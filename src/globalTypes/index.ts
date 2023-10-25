@@ -10,9 +10,8 @@ export interface CoffeeItem {
 }
 
 export interface CartItem {
-  id: string;
+  id?: string;
   size: string;
   amount: number;
   productId: string;
-  price: string;
 }

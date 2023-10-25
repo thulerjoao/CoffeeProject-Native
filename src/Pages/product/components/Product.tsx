@@ -40,11 +40,18 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import {productData} from '../../../globalMoked';
-// import {productData} from '../../../globalMoked';
+import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
 
 export interface ProductPageParams {
   productId?: string;
 }
+
+// export interface CartItem {
+//   id: string;
+//   size: string;
+//   amount: number;
+//   productId: string;
+// }
 
 const Product = () => {
   const route = useRoute<RouteProp<Record<string, ProductPageParams>>>();
@@ -55,6 +62,18 @@ const Product = () => {
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(1);
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const {addCart} = useCartReducer();
+
+  const handleAddProduct = () => {
+    if (product) {
+      const newProduct = {
+        size: selectedSize,
+        amount: amount,
+        productId: product.id,
+      };
+      addCart(newProduct);
+    }
+  };
 
   const handleSelectedSize = (prop: string) => {
     setSelectedSize(prop);
@@ -71,6 +90,9 @@ const Product = () => {
 
   const checkSelected = () => {
     setWasClicked(true);
+    if (isSelected) {
+      handleAddProduct();
+    }
   };
 
   const handleIncrease = () => {

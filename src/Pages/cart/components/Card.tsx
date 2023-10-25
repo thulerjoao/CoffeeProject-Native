@@ -22,6 +22,7 @@ import {
 import SmallTrash from '../assets/SmallTrash.png';
 import BigTrashIcon from '../assets/BigTrashIcon.png';
 import {useState} from 'react';
+import {productData} from '../../../globalMoked';
 
 // {
 //     id: '6',
@@ -32,10 +33,20 @@ import {useState} from 'react';
 //     price: 'R$ 9,90',
 //   },
 
-const Card = ({element}: any) => {
-  const screenWidth = Dimensions.get('window').width;
+// const cart: any = [
+//   {
+//     id: '1',
+//     size: '227',
+//     amount: 1,
+//     productId: '1',
+//     price: 9.9,
+//   },
+// ];
 
+const Card = ({prop}: any) => {
+  const screenWidth = Dimensions.get('window').width;
   const [amount, setAmount] = useState<number>(1);
+  const product = productData.find(element => element.id === prop.productId);
 
   const handleIncrease = () => {
     const newAmount = amount + 1;
@@ -62,16 +73,16 @@ const Card = ({element}: any) => {
         </BigTrashContainer>
         <RightContainer screenWidth={screenWidth}>
           <RightInternalContainer>
-            <CoffeeImage source={element.imageSource} />
+            <CoffeeImage source={product?.imageSource} />
             <DescriptionsContainer>
-              <NameDescription>{element.title}</NameDescription>
-              <SizeDescription>{element.size}</SizeDescription>
+              <NameDescription>{product?.title}</NameDescription>
+              <SizeDescription>{prop.size}</SizeDescription>
               <BottominternalContainer>
                 <MinusAndPlusContainer>
                   <TouchableOpacity onPress={() => handleDecrease()}>
                     <SignText>--</SignText>
                   </TouchableOpacity>
-                  <NumerText>{amount}</NumerText>
+                  <NumerText>{prop.amount}</NumerText>
                   <TouchableOpacity onPress={() => handleIncrease()}>
                     <SignText>+</SignText>
                   </TouchableOpacity>

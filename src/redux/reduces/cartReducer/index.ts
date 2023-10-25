@@ -16,71 +16,41 @@ interface cartListType {
 // ];
 
 const initialState: cartListType = {
-  cartList: [
-    // {
-    //   id: '1',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '2',
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '3',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '4',
-    //   isFirst: true as true,
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '5',
-    //   imageSource: TopCup01,
-    //   type: 'Tradicional',
-    //   title: 'Irlandês',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-    // {
-    //   id: '6',
-    //   imageSource: TopCup02,
-    //   type: 'Tradicional',
-    //   title: 'Capuccino',
-    //   size: '227ml',
-    //   price: 'R$ 9,90',
-    // },
-  ],
+  cartList: [],
 };
 
 export const cartSlice = createSlice({
   name: 'cartReducer',
   initialState: initialState,
   reducers: {
-    // create function here to change inital state and export as well
-    // setNameAction: (state, action: PayloadAction<productsListType>) => {
-    //   state.list += action.payload;
-    // },
+    addProductCart: (state, action) => {
+      const newProduct = action.payload;
+      const highestId = state.cartList.reduce((maxId, product) => {
+        const productId = +product.productId;
+        return productId > maxId ? productId : maxId;
+      }, 0);
+      newProduct.id = (highestId + 1).toString();
+      state.cartList.push(newProduct);
+    },
+    updateProductCartById: (state, action) => {
+      const {id, size, amount, productId} = action.payload;
+      const indexToUpdate = state.cartList.findIndex(item => item.id === id);
+      if (indexToUpdate !== -1) {
+        // Atualize os valores do objeto
+        state.cartList[indexToUpdate].size = size;
+        state.cartList[indexToUpdate].amount = amount;
+        state.cartList[indexToUpdate].productId = productId;
+      }
+    },
+    deleteProductCartById: (state, action) => {
+      const idToDelete = action.payload;
+      state.cartList = state.cartList.filter(item => item.id !== idToDelete);
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
 // export const {setNameAction} = productsSlice.actions;
-
+export const {addProductCart, updateProductCartById, deleteProductCartById} =
+  cartSlice.actions;
 export default cartSlice.reducer;
