@@ -60,6 +60,14 @@ const Home: React.FC = () => {
 
   const screenWidth = Dimensions.get('window').width;
 
+  const handleSelectByType = (type: string) => {
+    return productList
+      .filter(element => element.type === type)
+      .map(item => {
+        return <HorizontalCard key={item.id} data={item} />;
+      });
+  };
+
   const [selected, setSelected] = useState<string>('tradicionais');
 
   return (
@@ -96,7 +104,7 @@ const Home: React.FC = () => {
       </TopComponent>
       <HorizontalList>
         <Carousel
-          autoplay={true}
+          autoplay={false}
           loop={true}
           data={productList}
           renderItem={renderItem}
@@ -140,25 +148,13 @@ const Home: React.FC = () => {
           {selected === 'tradicionais' && (
             <BottomTitle>Tradicionais</BottomTitle>
           )}
-          {selected === 'tradicionais' &&
-            productList &&
-            productList.map(item => {
-              return <HorizontalCard key={item.id} data={item} />;
-            })}
+          {selected === 'tradicionais' && handleSelectByType('Tradicional')}
           {/* <BottomSpace /> */}
           {selected === 'doces' && <BottomTitle>Doces</BottomTitle>}
-          {selected === 'doces' &&
-            productList &&
-            productList.map(item => {
-              return <HorizontalCard key={item.id} data={item} />;
-            })}
+          {selected === 'doces' && productList && handleSelectByType('Doces')}
           {/* <BottomSpace /> */}
           {selected === 'especiais' && <BottomTitle>Especiais</BottomTitle>}
-          {selected === 'especiais' &&
-            productList &&
-            productList.map(item => {
-              return <HorizontalCard key={item.id} data={item} />;
-            })}
+          {selected === 'especiais' && handleSelectByType('Especiais')}
         </BottomSection>
       </BottomComponent>
     </HomeContainer>
