@@ -44,6 +44,8 @@ import {
 const Home: React.FC = () => {
   const {productList} = useProductsReducer();
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const [selected, setSelected] = useState<string>('tradicionais');
+  const [search, setSearch] = useState<string>('');
 
   type Props = {
     item: CoffeeItem;
@@ -68,7 +70,11 @@ const Home: React.FC = () => {
       });
   };
 
-  const [selected, setSelected] = useState<string>('tradicionais');
+  const handleSearch = () => {
+    return productList.filter(element =>
+      element.title.toUpperCase().includes(search.toUpperCase()),
+    );
+  };
 
   return (
     <HomeContainer>
@@ -97,6 +103,8 @@ const Home: React.FC = () => {
             <SearchBarInput
               placeholder={'Pesquisar'}
               placeholderTextColor={'#8d8585'}
+              onChange={(event: any) => setSearch(event.nativeEvent.text)}
+              value={search}
             />
           </SearchBarContainer>
           <CoffeeImage source={Coffee} />
@@ -106,7 +114,7 @@ const Home: React.FC = () => {
         <Carousel
           autoplay={false}
           loop={true}
-          data={productList}
+          data={handleSearch()}
           renderItem={renderItem}
           sliderWidth={screenWidth} // Largura do carrossel
           itemWidth={215} // Largura de cada item do carrossel
