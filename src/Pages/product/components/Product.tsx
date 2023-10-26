@@ -121,11 +121,12 @@ const Product = () => {
             <BackArrow source={whiteBackArrow} />
           </TouchableOpacity>
           {cartList.length === 0 ? (
-            <TouchableOpacity onPress={() => navigate('Cart', {backTo, productId})}>
+            <TouchableOpacity
+              onPress={() => navigate('Cart', {backTo, productId})}>
               <CartImage source={whiteCart} />
             </TouchableOpacity>
           ) : (
-            <GlobalCart />
+            <GlobalCart backTo={backTo} productId={productId} />
           )}
         </BackAndCart>
         <TypeText>{product?.type}</TypeText>

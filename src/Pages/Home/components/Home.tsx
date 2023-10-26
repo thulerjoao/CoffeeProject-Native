@@ -99,7 +99,7 @@ const Home: React.FC = () => {
               <LocationIcon source={Cart} />
             </TouchableOpacity>
           ) : (
-            <GlobalCart />
+            <GlobalCart backTo={backTo} />
           )}
         </Location>
         <Search>

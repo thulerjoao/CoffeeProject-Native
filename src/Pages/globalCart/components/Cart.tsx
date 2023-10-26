@@ -2,11 +2,21 @@
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TouchableOpacity} from 'react-native';
-import {CartIcon, GlobalCartContainer, NumberBaloon, NumberBaloonText} from '../styles/cart.styles';
+import {
+  CartIcon,
+  GlobalCartContainer,
+  NumberBaloon,
+  NumberBaloonText,
+} from '../styles/cart.styles';
 import Cart02 from '../assets/Cart02.png';
 import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
 
-const GlobalCart = () => {
+interface cartProp {
+  backTo: string;
+  productId?: string;
+}
+
+const GlobalCart = ({backTo, productId}: cartProp) => {
   const {navigate} = useNavigation<StackNavigationProp<ParamListBase>>();
   const {cartList} = useCartReducer();
 
@@ -17,7 +27,7 @@ const GlobalCart = () => {
   return (
     <GlobalCartContainer
       onPress={() => {
-        navigate('Cart');
+        navigate('Cart', {backTo, productId});
       }}>
       <CartIcon source={Cart02} />
       <NumberBaloon>

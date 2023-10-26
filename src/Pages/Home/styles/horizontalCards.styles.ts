@@ -32,7 +32,7 @@ export const CardBottomTitle = styled.Text`
 export const CardBottomText = styled.Text`
   color: #8d8585;
   font-size: 11px;
-  width: 65%;
+  width: 62.5%;
   margin-top: 5px;
   text-align: left;
 `;
