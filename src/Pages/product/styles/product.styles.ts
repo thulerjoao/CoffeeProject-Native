@@ -15,7 +15,9 @@ export const BackAndCart = styled.View`
   align-items: center;
   justify-content: space-between;
   margin-top: 25px;
-  padding: 20px 0;
+  padding: 25px 0;
+  padding-right: 2px;
+  height: 75px;
 `;
 export const BackArrow = styled.Image``;
 export const CartImage = styled.Image``;

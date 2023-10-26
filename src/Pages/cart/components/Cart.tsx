@@ -59,8 +59,8 @@ const Cart = () => {
           </IfEmptyCards>
         )}
         {cartList.length !== 0 &&
-          cartList.map(element => {
-            return <Card prop={element} key={element.id} />;
+          cartList.map((element, index) => {
+            return <Card prop={element} key={index} />;
           })}
       </CardsContainer>
       {cartList.length !== 0 && (

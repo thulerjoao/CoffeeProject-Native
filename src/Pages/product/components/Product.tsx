@@ -41,6 +41,7 @@ import {
 } from '@react-navigation/native';
 import {productData} from '../../../globalMoked';
 import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import GlobalCart from '../../globalCart';
 
 export interface ProductPageParams {
   productId?: string;
@@ -54,6 +55,7 @@ export interface ProductPageParams {
 // }
 
 const Product = () => {
+  const {cartList} = useCartReducer();
   const route = useRoute<RouteProp<Record<string, ProductPageParams>>>();
   const {productId} = route.params;
   const product = productData.find(element => element.id === productId);
@@ -117,9 +119,13 @@ const Product = () => {
           <TouchableOpacity onPress={() => navigate('Home')}>
             <BackArrow source={whiteBackArrow} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => navigate('Cart')}>
-            <CartImage source={whiteCart} />
-          </TouchableOpacity>
+          {cartList.length === 0 ? (
+            <TouchableOpacity onPress={() => navigate('Cart')}>
+              <CartImage source={whiteCart} />
+            </TouchableOpacity>
+          ) : (
+            <GlobalCart />
+          )}
         </BackAndCart>
         <TypeText>{product?.type}</TypeText>
         <TitleAndPrice>

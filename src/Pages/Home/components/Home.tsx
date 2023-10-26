@@ -40,9 +40,12 @@ import {
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import GlobalCart from '../../globalCart';
 
 const Home: React.FC = () => {
   const {productList} = useProductsReducer();
+  const {cartList} = useCartReducer();
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
   const [selected, setSelected] = useState<string>('tradicionais');
   const [search, setSearch] = useState<string>('');
@@ -87,12 +90,16 @@ const Home: React.FC = () => {
         <Location>
           <LocationIcon source={Icon} />
           <LocationText>Rio de Janeiro, RJ</LocationText>
-          <TouchableOpacity
-            onPress={() => {
-              navigate('Cart');
-            }}>
-            <LocationIcon source={Cart} />
-          </TouchableOpacity>
+          {cartList.length === 0 ? (
+            <TouchableOpacity
+              onPress={() => {
+                navigate('Cart');
+              }}>
+              <LocationIcon source={Cart} />
+            </TouchableOpacity>
+          ) : (
+            <GlobalCart />
+          )}
         </Location>
         <Search>
           <SearchText>
