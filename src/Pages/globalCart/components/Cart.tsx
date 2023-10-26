@@ -2,7 +2,7 @@
 import {ParamListBase, useNavigation} from '@react-navigation/native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {TouchableOpacity} from 'react-native';
-import {CartIcon, NumberBaloon, NumberBaloonText} from '../styles/cart.styles';
+import {CartIcon, GlobalCartContainer, NumberBaloon, NumberBaloonText} from '../styles/cart.styles';
 import Cart02 from '../assets/Cart02.png';
 import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
 
@@ -15,7 +15,7 @@ const GlobalCart = () => {
   }, 0);
 
   return (
-    <TouchableOpacity
+    <GlobalCartContainer
       onPress={() => {
         navigate('Cart');
       }}>
@@ -23,7 +23,7 @@ const GlobalCart = () => {
       <NumberBaloon>
         <NumberBaloonText>{totalAmount}</NumberBaloonText>
       </NumberBaloon>
-    </TouchableOpacity>
+    </GlobalCartContainer>
   );
 };
 

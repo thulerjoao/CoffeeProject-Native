@@ -49,6 +49,7 @@ const Home: React.FC = () => {
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
   const [selected, setSelected] = useState<string>('tradicionais');
   const [search, setSearch] = useState<string>('');
+  const backTo = 'Home';
 
   type Props = {
     item: CoffeeItem;
@@ -93,7 +94,7 @@ const Home: React.FC = () => {
           {cartList.length === 0 ? (
             <TouchableOpacity
               onPress={() => {
-                navigate('Cart');
+                navigate('Cart', {backTo});
               }}>
               <LocationIcon source={Cart} />
             </TouchableOpacity>

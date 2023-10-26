@@ -21,10 +21,8 @@ import {
 
 import SmallTrash from '../assets/SmallTrash.png';
 import BigTrashIcon from '../assets/BigTrashIcon.png';
-import {useState} from 'react';
 import {productData} from '../../../globalMoked';
 import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
-import {CartItem} from '../../../globalTypes';
 
 // {
 //     id: '6',
@@ -47,7 +45,6 @@ import {CartItem} from '../../../globalTypes';
 
 const Card = ({prop}: any) => {
   const screenWidth = Dimensions.get('window').width;
-  const [amount, setAmount] = useState<number>(1);
   const product = productData.find(element => element.id === prop.productId);
   const {updateCart, deleteCart} = useCartReducer();
 

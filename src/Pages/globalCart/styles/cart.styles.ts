@@ -1,5 +1,9 @@
 import styled from 'styled-components/native';
 
+export const GlobalCartContainer = styled.TouchableOpacity`
+  margin-right: 8px;
+`;
+
 export const CartIcon = styled.Image`
   height: 17px;
   margin-right: 5px;

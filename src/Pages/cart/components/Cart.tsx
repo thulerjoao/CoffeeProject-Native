@@ -27,12 +27,21 @@ import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer'
 import {
   NavigationProp,
   ParamListBase,
+  RouteProp,
   useNavigation,
+  useRoute,
 } from '@react-navigation/native';
+
+export interface CartPageParams {
+  backTo: string;
+  productId?: string;
+}
 
 const Cart = () => {
   const {cartList} = useCartReducer();
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const route = useRoute<RouteProp<Record<string, CartPageParams>>>();
+  const {backTo, productId} = route.params;
 
   return (
     <CartContainer>
@@ -42,7 +51,7 @@ const Cart = () => {
         translucent
       />
       <TopContainer>
-        <TouchableOpacity onPress={() => navigate('Home')}>
+        <TouchableOpacity onPress={() => navigate(backTo, {productId})}>
           <BackArrowImage source={BlackBackArrow} />
         </TouchableOpacity>
         <CartTitle>Carrinho</CartTitle>

@@ -65,6 +65,7 @@ const Product = () => {
   const [amount, setAmount] = useState<number>(1);
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
   const {addCart} = useCartReducer();
+  const backTo = 'Product';
 
   const handleAddProduct = () => {
     if (product) {
@@ -120,7 +121,7 @@ const Product = () => {
             <BackArrow source={whiteBackArrow} />
           </TouchableOpacity>
           {cartList.length === 0 ? (
-            <TouchableOpacity onPress={() => navigate('Cart')}>
+            <TouchableOpacity onPress={() => navigate('Cart', {backTo, productId})}>
               <CartImage source={whiteCart} />
             </TouchableOpacity>
           ) : (
