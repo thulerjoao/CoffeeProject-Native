@@ -50,12 +50,24 @@ export const DescriptionsContainer = styled.View`
   height: 100%;
   margin-left: 15px;
 `;
-export const NameDescription = styled.Text`
-  font-size: 16px;
-  font-weight: 600;
+
+export const NameAndPriceContainer = styled.View`
   margin-top: 14px;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+export const NameDescription = styled.Text`
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  width: 70%;
+`;
+export const PriceDescription = styled.Text`
+  font-size: 15px;
+  font-weight: 800;
   color: black;
 `;
+
 export const SizeDescription = styled.Text`
   font-size: 14px;
   font-weight: 400;

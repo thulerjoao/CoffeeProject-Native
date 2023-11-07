@@ -11,8 +11,10 @@ import {
   LittleTrash,
   LittleTrashContainer,
   MinusAndPlusContainer,
+  NameAndPriceContainer,
   NameDescription,
   NumerText,
+  PriceDescription,
   RightContainer,
   RightInternalContainer,
   SignText,
@@ -23,25 +25,6 @@ import SmallTrash from '../assets/SmallTrash.png';
 import BigTrashIcon from '../assets/BigTrashIcon.png';
 import {productData} from '../../../globalMoked';
 import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
-
-// {
-//     id: '6',
-//     imageSource: TopCup02,
-//     type: 'Tradicional',
-//     title: 'Capuccino',
-//     size: '227ml',
-//     price: 'R$ 9,90',
-//   },
-
-// const cart: any = [
-//   {
-//     id: '1',
-//     size: '227',
-//     amount: 1,
-//     productId: '1',
-//     price: 9.9,
-//   },
-// ];
 
 const Card = ({prop}: any) => {
   const screenWidth = Dimensions.get('window').width;
@@ -83,7 +66,12 @@ const Card = ({prop}: any) => {
           <RightInternalContainer>
             <CoffeeImage source={product?.imageSource} />
             <DescriptionsContainer>
-              <NameDescription>{product?.title}</NameDescription>
+              <NameAndPriceContainer>
+                <NameDescription>{product?.title}</NameDescription>
+                <PriceDescription>
+                  {`R$ ${(9.9 * prop.amount).toFixed(2)}`}
+                </PriceDescription>
+              </NameAndPriceContainer>
               <SizeDescription>{`${prop.size} ml`}</SizeDescription>
               <BottominternalContainer>
                 <MinusAndPlusContainer>
