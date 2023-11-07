@@ -75,6 +75,7 @@ const Product = () => {
         productId: product.id,
       };
       addCart(newProduct);
+      navigate('Home');
     }
   };
 

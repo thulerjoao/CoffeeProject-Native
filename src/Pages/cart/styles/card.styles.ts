@@ -103,3 +103,7 @@ export const LittleTrashContainer = styled.TouchableOpacity`
   justify-content: center;
 `;
 export const LittleTrash = styled.Image``;
+
+function calc(arg0: any) {
+  throw new Error('Function not implemented.');
+}

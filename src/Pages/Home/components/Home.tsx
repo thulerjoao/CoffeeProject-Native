@@ -57,10 +57,6 @@ const Home: React.FC = () => {
   };
 
   const renderItem = ({item, index}: Props) => {
-    // const scale = (parallaxProps?.style?.transform[0]?.scale || 1) * 0.5;
-
-    // const cardStyle = {transform: [{scale}], opacity: 1};
-
     return <VerticalCard key={index} data={item} />;
   };
 

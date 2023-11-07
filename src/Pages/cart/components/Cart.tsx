@@ -31,6 +31,7 @@ import {
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
+import {CartItem} from '../../../globalTypes';
 
 export interface CartPageParams {
   backTo: string;
@@ -42,6 +43,14 @@ const Cart = () => {
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
   const route = useRoute<RouteProp<Record<string, CartPageParams>>>();
   const {backTo, productId} = route.params;
+
+  const calcTotalValue = (): string => {
+    let totalAmount = cartList
+      .map((item: CartItem) => item.amount)
+      .reduce((a: number, b: number) => a + b, 0);
+    const finalvalue = (totalAmount * 9.9).toFixed(2);
+    return finalvalue;
+  };
 
   return (
     <CartContainer>
@@ -76,7 +85,7 @@ const Cart = () => {
         <FooterComponent>
           <ValueContainer>
             <ValueText>Valor total</ValueText>
-            <ValueNumber>R$ 9,90</ValueNumber>
+            <ValueNumber>{`R$ ${calcTotalValue()}`}</ValueNumber>
           </ValueContainer>
           <ConfirmButton onPress={() => navigate('Finish')}>
             <ConfirmButtonText>CONFIRMAR PEDIDO</ConfirmButtonText>
