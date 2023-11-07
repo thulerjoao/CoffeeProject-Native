@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
 import {Dimensions, StatusBar, TouchableOpacity} from 'react-native';
@@ -32,7 +33,7 @@ import Coffee from '../assets/Coffee.png';
 // import Coffee01 from '../assets/Coffee01.png';
 import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {CoffeeItem} from '../../../globalTypes';
 import {useProductsReducer} from '../../../redux/reduces/productsReducer/useProductsReducer';
 import {
@@ -48,6 +49,7 @@ const Home: React.FC = () => {
   const {cartList} = useCartReducer();
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
   const [selected, setSelected] = useState<string>('tradicionais');
+  const [filteredList, setFilteredList] = useState<CoffeeItem[]>(productList);
   const [search, setSearch] = useState<string>('');
   const backTo = 'Home';
 
@@ -71,15 +73,20 @@ const Home: React.FC = () => {
   };
 
   const handleSearch = () => {
-    return productList.filter(element =>
-      element.title.toUpperCase().includes(search.toUpperCase()),
+    setFilteredList(
+      productList.filter(element =>
+        element.title.toUpperCase().includes(search.toUpperCase()),
+      ),
     );
   };
+  useEffect(() => {
+    handleSearch();
+  }, [search]);
 
   return (
     <HomeContainer>
       <StatusBar
-        backgroundColor="#00000030"
+        backgroundColor="#1407072f"
         barStyle="light-content"
         translucent
       />
@@ -118,7 +125,7 @@ const Home: React.FC = () => {
         <Carousel
           autoplay={false}
           loop={true}
-          data={handleSearch()}
+          data={filteredList}
           renderItem={renderItem}
           sliderWidth={screenWidth} // Largura do carrossel
           itemWidth={215} // Largura de cada item do carrossel

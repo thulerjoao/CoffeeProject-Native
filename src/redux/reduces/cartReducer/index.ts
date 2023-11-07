@@ -46,11 +46,18 @@ export const cartSlice = createSlice({
       const idToDelete = action.payload;
       state.cartList = state.cartList.filter(item => item.id !== idToDelete);
     },
+    cleanEntireCart: state => {
+      state.cartList = [];
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
 // export const {setNameAction} = productsSlice.actions;
-export const {addProductCart, updateProductCartById, deleteProductCartById} =
-  cartSlice.actions;
+export const {
+  addProductCart,
+  updateProductCartById,
+  deleteProductCartById,
+  cleanEntireCart,
+} = cartSlice.actions;
 export default cartSlice.reducer;

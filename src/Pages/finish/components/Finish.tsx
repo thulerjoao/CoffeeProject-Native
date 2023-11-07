@@ -19,17 +19,19 @@ import {
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
 
 const Finish = () => {
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const [showUp, setShowUp] = useState<boolean>(false);
-
+  const {cleanCart} = useCartReducer();
   const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
 
   useEffect(() => {}, [wasClicked]);
   const handleClick = () => {
     setWasClicked(!wasClicked);
     setTimeout(() => {
+      cleanCart();
       navigate('Home');
     }, 1200);
   };

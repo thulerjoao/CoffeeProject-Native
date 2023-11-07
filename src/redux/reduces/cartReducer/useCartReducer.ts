@@ -1,7 +1,12 @@
 import {useDispatch} from 'react-redux';
 import {useAppSelector} from '../../hooks';
 import {CartItem} from '../../../globalTypes';
-import {addProductCart, deleteProductCartById, updateProductCartById} from '.';
+import {
+  addProductCart,
+  deleteProductCartById,
+  updateProductCartById,
+  cleanEntireCart,
+} from '.';
 
 export const useCartReducer = () => {
   const dispatch = useDispatch();
@@ -15,6 +20,9 @@ export const useCartReducer = () => {
   const deleteCart = (id: CartItem) => {
     dispatch(deleteProductCartById(id));
   };
+  const cleanCart = () => {
+    dispatch(cleanEntireCart());
+  };
 
-  return {cartList, addCart, updateCart, deleteCart};
+  return {cartList, addCart, updateCart, deleteCart, cleanCart};
 };
