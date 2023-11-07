@@ -13,7 +13,9 @@ export const CardTop = styled.TouchableOpacity`
 `;
 
 export const CardTopImage = styled.Image`
-  top: -40px;
+  width: 110px;
+  height: 110px;
+  top: -35px;
   position: absolute;
 `;
 
