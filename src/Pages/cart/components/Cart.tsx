@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar, TouchableOpacity} from 'react-native';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import {
   BackArrowImage,
   CardsContainer,
@@ -23,7 +23,7 @@ import {
 import BlackBackArrow from '../assets/BlackBackArrow.png';
 import Card from './Card';
 import whiteCart from '../assets/whiteCart.png';
-import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
 import {
   NavigationProp,
   ParamListBase,
@@ -31,7 +31,7 @@ import {
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
-import {CartItem} from '../../../globalTypes';
+import { CartItem } from '../../../globalTypes';
 
 export interface CartPageParams {
   backTo: string;
@@ -39,10 +39,10 @@ export interface CartPageParams {
 }
 
 const Cart = () => {
-  const {cartList} = useCartReducer();
-  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const { cartList } = useCartReducer();
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const route = useRoute<RouteProp<Record<string, CartPageParams>>>();
-  const {backTo, productId} = route.params;
+  const { backTo, productId } = route.params;
 
   const calcTotalValue = (): string => {
     let totalAmount = cartList
@@ -54,13 +54,9 @@ const Cart = () => {
 
   return (
     <CartContainer>
-      <StatusBar
-        backgroundColor="transparent"
-        barStyle="dark-content"
-        translucent
-      />
+      <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
       <TopContainer>
-        <TouchableOpacity onPress={() => navigate(backTo, {productId})}>
+        <TouchableOpacity onPress={() => navigate(backTo, { productId })}>
           <BackArrowImage source={BlackBackArrow} />
         </TouchableOpacity>
         <CartTitle>Carrinho</CartTitle>

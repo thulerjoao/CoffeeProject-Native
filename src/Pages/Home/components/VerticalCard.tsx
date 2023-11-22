@@ -1,9 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import {
   CardTop,
   CardTopImage,
@@ -13,12 +9,12 @@ import {
   CardTopType,
 } from '../styles/verticalCards.styles';
 
-const VerticalCard = ({data}: any) => {
-  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+const VerticalCard = ({ data }: any) => {
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const productId = data.id;
 
   return (
-    <CardTop onPress={() => navigate('Product', {productId})}>
+    <CardTop onPress={() => navigate('Product', { productId })}>
       <CardTopImage source={data.imageSource} />
       <CardTopType>{data.type}</CardTopType>
       <CardTopTitle>{data.title}</CardTopTitle>

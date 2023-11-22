@@ -1,23 +1,15 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {StatusBar} from 'react-native';
+import { StatusBar } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import {
-  LoadingContainer,
-  LogoComponent,
-  LogoContainer,
-} from '../styles/loading.styles';
+import { LoadingContainer, LogoComponent, LogoContainer } from '../styles/loading.styles';
 import Cup from '../assets/Cup.png';
 import LogoText from '../assets/LogoText.png';
-import {useState} from 'react';
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
+import { useState } from 'react';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 
 const Loading: React.FC = () => {
   const [startEnd, setStartEnd] = useState<boolean>(false);
-  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
 
   const goToHome = () => {
     setTimeout(() => {
@@ -35,20 +27,10 @@ const Loading: React.FC = () => {
 
   return (
     <LoadingContainer>
-      <StatusBar
-        backgroundColor="transparent"
-        barStyle="light-content"
-        translucent
-      />
-      <Animatable.View
-        animation={startEnd ? 'tada' : ''}
-        easing="ease-in-out"
-        duration={1000}>
+      <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
+      <Animatable.View animation={startEnd ? 'tada' : ''} easing="ease-in-out" duration={1000}>
         <LogoContainer>
-          <Animatable.View
-            animation={'fadeInLeftBig'}
-            easing="ease-in-out"
-            duration={1600}>
+          <Animatable.View animation={'fadeInLeftBig'} easing="ease-in-out" duration={1600}>
             <LogoComponent source={Cup} />
           </Animatable.View>
           <Animatable.Image

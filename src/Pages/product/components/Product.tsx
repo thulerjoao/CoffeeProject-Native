@@ -1,12 +1,12 @@
 /* eslint-disable react/react-in-jsx-scope */
 
-import {StatusBar, TouchableOpacity} from 'react-native';
+import { StatusBar, TouchableOpacity } from 'react-native';
 import coffee from '../assets/coffee.png';
 // import purpleCart from '../assets/purpleCart.png';
 import whiteCart from '../assets/whiteCart.png';
 import whiteBackArrow from '../assets/whiteBackArrow.png';
 import Smoke from '../assets/Smoke.png';
-import {RouteProp, useRoute} from '@react-navigation/native';
+import { RouteProp, useRoute } from '@react-navigation/native';
 
 import {
   AddButton,
@@ -33,14 +33,10 @@ import {
   TopContainer,
   TypeText,
 } from '../styles/product.styles';
-import {useState} from 'react';
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
-import {productData} from '../../../globalMoked';
-import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import { useState } from 'react';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { productData } from '../../../globalMoked';
+import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
 import GlobalCart from '../../globalCart';
 
 export interface ProductPageParams {
@@ -55,16 +51,16 @@ export interface ProductPageParams {
 // }
 
 const Product = () => {
-  const {cartList} = useCartReducer();
+  const { cartList } = useCartReducer();
   const route = useRoute<RouteProp<Record<string, ProductPageParams>>>();
-  const {productId} = route.params;
-  const product = productData.find(element => element.id === productId);
+  const { productId } = route.params;
+  const product = productData.find((element) => element.id === productId);
   const [selectedSize, setSelectedSize] = useState<string>('');
   const [wasClicked, setWasClicked] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<boolean>(false);
   const [amount, setAmount] = useState<number>(1);
-  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
-  const {addCart} = useCartReducer();
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { addCart } = useCartReducer();
   const backTo = 'Product';
 
   const handleAddProduct = () => {
@@ -111,19 +107,14 @@ const Product = () => {
 
   return (
     <ProductContainer>
-      <StatusBar
-        backgroundColor="transparent"
-        barStyle="light-content"
-        translucent
-      />
+      <StatusBar backgroundColor="transparent" barStyle="light-content" translucent />
       <TopContainer>
         <BackAndCart>
           <TouchableOpacity onPress={() => navigate('Home')}>
             <BackArrow source={whiteBackArrow} />
           </TouchableOpacity>
           {cartList.length === 0 ? (
-            <TouchableOpacity
-              onPress={() => navigate('Cart', {backTo, productId})}>
+            <TouchableOpacity onPress={() => navigate('Cart', { backTo, productId })}>
               <CartImage source={whiteCart} />
             </TouchableOpacity>
           ) : (
@@ -148,28 +139,25 @@ const Product = () => {
             isSelected={isSelected}
             wasClicked={wasClicked}
             selectedSize={handleSizeReturn('114')}
-            onPress={() => handleSelectedSize('114')}>
-            <SizeButtonText selectedSize={handleSizeReturn('114')}>
-              114ml
-            </SizeButtonText>
+            onPress={() => handleSelectedSize('114')}
+          >
+            <SizeButtonText selectedSize={handleSizeReturn('114')}>114ml</SizeButtonText>
           </SizeButton>
           <SizeButton
             isSelected={isSelected}
             wasClicked={wasClicked}
             selectedSize={handleSizeReturn('140')}
-            onPress={() => handleSelectedSize('140')}>
-            <SizeButtonText selectedSize={handleSizeReturn('140')}>
-              140ml
-            </SizeButtonText>
+            onPress={() => handleSelectedSize('140')}
+          >
+            <SizeButtonText selectedSize={handleSizeReturn('140')}>140ml</SizeButtonText>
           </SizeButton>
           <SizeButton
             isSelected={isSelected}
             wasClicked={wasClicked}
             selectedSize={handleSizeReturn('227')}
-            onPress={() => handleSelectedSize('227')}>
-            <SizeButtonText selectedSize={handleSizeReturn('227')}>
-              227ml
-            </SizeButtonText>
+            onPress={() => handleSelectedSize('227')}
+          >
+            <SizeButtonText selectedSize={handleSizeReturn('227')}>227ml</SizeButtonText>
           </SizeButton>
         </SizeContainer>
         <AddContainer>
@@ -183,7 +171,8 @@ const Product = () => {
           <AddButton
             isSelected={isSelected}
             wasClicked={wasClicked}
-            onPress={() => checkSelected()}>
+            onPress={() => checkSelected()}
+          >
             <AddButtonText>ADICIONAR</AddButtonText>
           </AddButton>
         </AddContainer>

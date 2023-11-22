@@ -10,7 +10,7 @@ import Coffee09 from '../globalImages/Coffee09.png';
 import Coffee10 from '../globalImages/Coffee10.png';
 import Coffee11 from '../globalImages/Coffee11.png';
 import Coffee12 from '../globalImages/Coffee12.png';
-import {CoffeeItem} from '../globalTypes';
+import { CoffeeItem } from '../globalTypes';
 
 export const productData: CoffeeItem[] = [
   {

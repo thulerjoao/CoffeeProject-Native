@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/react-in-jsx-scope */
-import {Dimensions, StatusBar, TouchableOpacity} from 'react-native';
+import { Dimensions, StatusBar, TouchableOpacity } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 import {
   BottomComponent,
@@ -33,21 +33,17 @@ import Coffee from '../assets/Coffee.png';
 // import Coffee01 from '../assets/Coffee01.png';
 import VerticalCard from './VerticalCard';
 import HorizontalCard from './HorizontalCard';
-import {useEffect, useState} from 'react';
-import {CoffeeItem} from '../../../globalTypes';
-import {useProductsReducer} from '../../../redux/reduces/productsReducer/useProductsReducer';
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
-import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import { useEffect, useState } from 'react';
+import { CoffeeItem } from '../../../globalTypes';
+import { useProductsReducer } from '../../../redux/reduces/productsReducer/useProductsReducer';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
 import GlobalCart from '../../globalCart';
 
 const Home: React.FC = () => {
-  const {productList} = useProductsReducer();
-  const {cartList} = useCartReducer();
-  const {navigate} = useNavigation<NavigationProp<ParamListBase>>();
+  const { productList } = useProductsReducer();
+  const { cartList } = useCartReducer();
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const [selected, setSelected] = useState<string>('tradicionais');
   const [filteredList, setFilteredList] = useState<CoffeeItem[]>(productList);
   const [search, setSearch] = useState<string>('');
@@ -58,7 +54,7 @@ const Home: React.FC = () => {
     index: number;
   };
 
-  const renderItem = ({item, index}: Props) => {
+  const renderItem = ({ item, index }: Props) => {
     return <VerticalCard key={index} data={item} />;
   };
 
@@ -66,17 +62,15 @@ const Home: React.FC = () => {
 
   const handleSelectByType = (type: string) => {
     return productList
-      .filter(element => element.type === type)
-      .map(item => {
+      .filter((element) => element.type === type)
+      .map((item) => {
         return <HorizontalCard key={item.id} data={item} />;
       });
   };
 
   const handleSearch = () => {
     setFilteredList(
-      productList.filter(element =>
-        element.title.toUpperCase().includes(search.toUpperCase()),
-      ),
+      productList.filter((element) => element.title.toUpperCase().includes(search.toUpperCase())),
     );
   };
   useEffect(() => {
@@ -85,11 +79,7 @@ const Home: React.FC = () => {
 
   return (
     <HomeContainer>
-      <StatusBar
-        backgroundColor="#1407072f"
-        barStyle="light-content"
-        translucent
-      />
+      <StatusBar backgroundColor="#1407072f" barStyle="light-content" translucent />
       <TopComponent>
         <Location>
           <LocationIcon source={Icon} />
@@ -97,8 +87,9 @@ const Home: React.FC = () => {
           {cartList.length === 0 ? (
             <TouchableOpacity
               onPress={() => {
-                navigate('Cart', {backTo});
-              }}>
+                navigate('Cart', { backTo });
+              }}
+            >
               <LocationIcon source={Cart} />
             </TouchableOpacity>
           ) : (
@@ -106,9 +97,7 @@ const Home: React.FC = () => {
           )}
         </Location>
         <Search>
-          <SearchText>
-            Encontre o café perfeito para qualquer hora do dia
-          </SearchText>
+          <SearchText>Encontre o café perfeito para qualquer hora do dia</SearchText>
           <SearchBarContainer>
             <SearchBarIcon source={Glass} />
             <SearchBarInput
@@ -142,21 +131,22 @@ const Home: React.FC = () => {
           <TopTitleFirstSection>
             <TypeButtons
               selected={selected === 'tradicionais' && true}
-              onPress={() => setSelected('tradicionais')}>
+              onPress={() => setSelected('tradicionais')}
+            >
               <TypeButtonsText selected={selected === 'tradicionais' && true}>
                 Tradicionais
               </TypeButtonsText>
             </TypeButtons>
             <TypeButtons
               selected={selected === 'doces' && true}
-              onPress={() => setSelected('doces')}>
-              <TypeButtonsText selected={selected === 'doces' && true}>
-                Doces
-              </TypeButtonsText>
+              onPress={() => setSelected('doces')}
+            >
+              <TypeButtonsText selected={selected === 'doces' && true}>Doces</TypeButtonsText>
             </TypeButtons>
             <TypeButtons
               selected={selected === 'especiais' && true}
-              onPress={() => setSelected('especiais')}>
+              onPress={() => setSelected('especiais')}
+            >
               <TypeButtonsText selected={selected === 'especiais' && true}>
                 Especiais
               </TypeButtonsText>
@@ -164,9 +154,7 @@ const Home: React.FC = () => {
           </TopTitleFirstSection>
         </TopSection>
         <BottomSection>
-          {selected === 'tradicionais' && (
-            <BottomTitle>Tradicionais</BottomTitle>
-          )}
+          {selected === 'tradicionais' && <BottomTitle>Tradicionais</BottomTitle>}
           {selected === 'tradicionais' && handleSelectByType('Tradicional')}
           {/* <BottomSpace /> */}
           {selected === 'doces' && <BottomTitle>Doces</BottomTitle>}

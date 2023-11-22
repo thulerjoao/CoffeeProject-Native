@@ -1,5 +1,5 @@
 /* eslint-disable react/react-in-jsx-scope */
-import {Dimensions, TouchableOpacity} from 'react-native';
+import { Dimensions, TouchableOpacity } from 'react-native';
 import {
   BigTrash,
   BigTrashContainer,
@@ -23,13 +23,13 @@ import {
 
 import SmallTrash from '../assets/SmallTrash.png';
 import BigTrashIcon from '../assets/BigTrashIcon.png';
-import {productData} from '../../../globalMoked';
-import {useCartReducer} from '../../../redux/reduces/cartReducer/useCartReducer';
+import { productData } from '../../../globalMoked';
+import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
 
-const Card = ({prop}: any) => {
+const Card = ({ prop }: any) => {
   const screenWidth = Dimensions.get('window').width;
-  const product = productData.find(element => element.id === prop.productId);
-  const {updateCart, deleteCart} = useCartReducer();
+  const product = productData.find((element) => element.id === prop.productId);
+  const { updateCart, deleteCart } = useCartReducer();
 
   const handleUpdateAmount = (newAmount: number) => {
     if (product) {
@@ -54,10 +54,7 @@ const Card = ({prop}: any) => {
   };
 
   return (
-    <BottomContainer
-      horizontal
-      showsHorizontalScrollIndicator={false}
-      initialNumToRender={5000}>
+    <BottomContainer horizontal showsHorizontalScrollIndicator={false} initialNumToRender={5000}>
       <InternalBottomContainer>
         {/* <BigTrashContainer>
           <BigTrash source={BigTrashIcon} />
@@ -68,9 +65,7 @@ const Card = ({prop}: any) => {
             <DescriptionsContainer>
               <NameAndPriceContainer>
                 <NameDescription>{product?.title}</NameDescription>
-                <PriceDescription>
-                  {`R$ ${(9.9 * prop.amount).toFixed(2)}`}
-                </PriceDescription>
+                <PriceDescription>{`R$ ${(9.9 * prop.amount).toFixed(2)}`}</PriceDescription>
               </NameAndPriceContainer>
               <SizeDescription>{`${prop.size} ml`}</SizeDescription>
               <BottominternalContainer>
