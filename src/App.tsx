@@ -5,6 +5,7 @@ import Cart from './Pages/cart';
 import Finish from './Pages/finish';
 import Loading from './Pages/loading';
 import Home from './Pages/Home';
+import Login from './Pages/login';
 import Product from './Pages/product';
 import store from './redux/store';
 import { NavigationContainer } from '@react-navigation/native';
@@ -29,6 +30,7 @@ const App = () => {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen name="Loading" component={Loading} options={{ headerShown: false }} />
+          <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
           <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
           <Stack.Screen name="Product" component={Product} options={{ headerShown: false }} />

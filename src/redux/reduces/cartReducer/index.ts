@@ -1,5 +1,5 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {CartItem} from '../../../globalTypes';
+import { createSlice } from '@reduxjs/toolkit';
+import { CartItem } from '../../../globalTypes';
 
 interface cartListType {
   cartList: CartItem[];
@@ -33,8 +33,8 @@ export const cartSlice = createSlice({
       state.cartList.push(newProduct);
     },
     updateProductCartById: (state, action) => {
-      const {id, size, amount, productId} = action.payload;
-      const indexToUpdate = state.cartList.findIndex(item => item.id === id);
+      const { id, size, amount, productId } = action.payload;
+      const indexToUpdate = state.cartList.findIndex((item) => item.id === id);
       if (indexToUpdate !== -1) {
         // Atualize os valores do objeto
         state.cartList[indexToUpdate].size = size;
@@ -44,9 +44,9 @@ export const cartSlice = createSlice({
     },
     deleteProductCartById: (state, action) => {
       const idToDelete = action.payload;
-      state.cartList = state.cartList.filter(item => item.id !== idToDelete);
+      state.cartList = state.cartList.filter((item) => item.id !== idToDelete);
     },
-    cleanEntireCart: state => {
+    cleanEntireCart: (state) => {
       state.cartList = [];
     },
   },
@@ -54,10 +54,6 @@ export const cartSlice = createSlice({
 
 // Action creators are generated for each case reducer function
 // export const {setNameAction} = productsSlice.actions;
-export const {
-  addProductCart,
-  updateProductCartById,
-  deleteProductCartById,
-  cleanEntireCart,
-} = cartSlice.actions;
+export const { addProductCart, updateProductCartById, deleteProductCartById, cleanEntireCart } =
+  cartSlice.actions;
 export default cartSlice.reducer;

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {PayloadAction, createSlice} from '@reduxjs/toolkit';
-import {CoffeeItem} from '../../../globalTypes';
-import {productData} from '../../../globalMoked';
+import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { CoffeeItem } from '../../../globalTypes';
+import { productData } from '../../../globalMoked';
 
 interface productsListType {
   productList: CoffeeItem[];

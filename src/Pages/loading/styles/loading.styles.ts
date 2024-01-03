@@ -13,8 +13,8 @@ export const LoadingContainer = styled.View`
 
 export const LoadingBar = styled(LinearGradient).attrs({
   colors: ['#969696', '#fff'], // Defina suas cores aqui
-  start: {x: 0, y: 0},
-  end: {x: 1.5, y: 0},
+  start: { x: 0, y: 0 },
+  end: { x: 1.5, y: 0 },
 })`
   width: 160px;
   height: 2px;
