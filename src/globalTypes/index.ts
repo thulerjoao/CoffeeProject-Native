@@ -15,3 +15,12 @@ export interface CartItem {
   amount: number;
   productId: string;
 }
+
+export interface User {
+  id?: string;
+  name: string;
+  email: string;
+  cartId: string;
+}
+
+

@@ -5,16 +5,6 @@ interface cartListType {
   cartList: CartItem[];
 }
 
-// const cart: any = [
-//   {
-//     id: '1',
-//     size: '227',
-//     amount: 1,
-//     productId: '1',
-//     price: 9.9,
-//   },
-// ];
-
 const initialState: cartListType = {
   cartList: [],
 };

@@ -11,6 +11,7 @@ import store from './redux/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import CreateAccount from './Pages/CreateAccount';
+import Providers from './contexts';
 
 // const TextNew = styled.Text`
 //   background-color: red;
@@ -27,6 +28,7 @@ const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
+    <Providers>
     <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator>
@@ -44,6 +46,7 @@ const App = () => {
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>
+    </Providers>
   );
 };
 

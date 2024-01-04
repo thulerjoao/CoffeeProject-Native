@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import * as Animatable from 'react-native-animatable';
-import { LoadingContainer, LogoComponent, LogoContainer } from '../styles/loading.styles';
 import Cup from '../assets/Cup.png';
 import LogoText from '../assets/LogoText.png';
-import { useState } from 'react';
-import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { LoadingContainer, LogoComponent, LogoContainer } from '../styles/loading.styles';
 
 const Loading: React.FC = () => {
   const [startEnd, setStartEnd] = useState<boolean>(false);
