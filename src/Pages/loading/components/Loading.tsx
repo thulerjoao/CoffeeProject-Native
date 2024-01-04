@@ -13,7 +13,7 @@ const Loading: React.FC = () => {
 
   const goToHome = () => {
     setTimeout(() => {
-      navigate('Login');
+      navigate('CreateAccount');
     }, 3400);
   };
 

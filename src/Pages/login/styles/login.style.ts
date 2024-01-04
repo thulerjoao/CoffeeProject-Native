@@ -73,23 +73,23 @@ export const LoginButtonText = styled.Text`
   font-weight: 600;
 `;
 
-export const CreateAcountContainer = styled.View`
+export const CreateAccountContainer = styled.View`
   width: 100%;
   flex-direction: row;
   justify-content: center;
   margin-top: 10%;
 `;
 
-export const CreateAcountFirstText = styled.Text`
+export const CreateAccountFirstText = styled.Text`
   font-size: 14px;
   font-weight: 600;
 `;
 
-export const NewAcountTouch = styled.TouchableOpacity`
+export const NewAccountTouch = styled.TouchableOpacity`
   margin-left: 5px;
 `;
 
-export const NewAcountTouchText = styled.Text`
+export const NewAccountTouchText = styled.Text`
   font-size: 14px;
   font-weight: 600;
   color: #4b2994;

@@ -10,6 +10,7 @@ import Product from './Pages/product';
 import store from './redux/store';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import CreateAccount from './Pages/CreateAccount';
 
 // const TextNew = styled.Text`
 //   background-color: red;
@@ -31,6 +32,11 @@ const App = () => {
         <Stack.Navigator>
           <Stack.Screen name="Loading" component={Loading} options={{ headerShown: false }} />
           <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+          <Stack.Screen
+            name="CreateAccount"
+            component={CreateAccount}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
           <Stack.Screen name="Cart" component={Cart} options={{ headerShown: false }} />
           <Stack.Screen name="Product" component={Product} options={{ headerShown: false }} />

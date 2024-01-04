@@ -5,7 +5,7 @@ import NotTick from '../assets/NotTick.png';
 import Ticked from '../assets/Ticked.png';
 import {
   BottonContainer,
-  CreateAcountFirstText,
+  CreateAccountFirstText,
   ForgotPassword,
   LoginButton,
   LoginButtonText,
@@ -15,9 +15,9 @@ import {
   Rememberme,
   RemembermeContainer,
   TicOrNot,
-  NewAcountTouch,
-  NewAcountTouchText,
-  CreateAcountContainer,
+  NewAccountTouch,
+  NewAccountTouchText,
+  CreateAccountContainer,
 } from '../styles/login.style';
 import { useState } from 'react';
 
@@ -53,12 +53,12 @@ const Login: React.FC = () => {
         <LoginButtonText>ENTRAR</LoginButtonText>
       </LoginButton>
 
-      <CreateAcountContainer>
-        <CreateAcountFirstText>Novo por aqui?</CreateAcountFirstText>
-        <NewAcountTouch>
-          <NewAcountTouchText>Criar conta.</NewAcountTouchText>
-        </NewAcountTouch>
-      </CreateAcountContainer>
+      <CreateAccountContainer>
+        <CreateAccountFirstText>Novo por aqui?</CreateAccountFirstText>
+        <NewAccountTouch>
+          <NewAccountTouchText>Criar conta.</NewAccountTouchText>
+        </NewAccountTouch>
+      </CreateAccountContainer>
     </LoginContainer>
   );
 };
