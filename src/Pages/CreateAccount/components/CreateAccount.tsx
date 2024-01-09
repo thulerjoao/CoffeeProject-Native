@@ -9,12 +9,15 @@ import {
 } from '../styles/createAccount.style';
 import { useState } from 'react';
 import Api from '../../../services/api';
+import { User } from '../../../globalTypes';
+import { useAuth } from '../../../contexts/auth';
 
 const CreateAccount: React.FC = () => {
   const [name, setName] = useState<string>('');
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [confirmPassword, setConfirmPassword] = useState<string>('');
+  const { login, user } = useAuth();
 
   const handleClick = async () => {
     const data = {
@@ -23,14 +26,22 @@ const CreateAccount: React.FC = () => {
       password,
       confirmPassword,
     };
+    const loginData = {
+      email,
+      password,
+    };
     if (name !== '' && email !== '' && password !== '' && confirmPassword === password) {
-      console.log('entrei')
+      console.log('entrei');
       return await Api.post('/user', data)
         .then((res) => {
-          console.log(res.data) 
+          Api.post('/auth', loginData).then(() => {
+            const token: string = res.data.token;
+            const user: User = res.data.user;
+            login({ token, user, isChecked: true });
+          }).catch(()=>console.log('deu ruim aqui'));
         })
         .catch((err) => {
-          console.log(err.data) 
+          console.log(err.data);
         });
     }
   };
