@@ -7,9 +7,33 @@ import {
   CreateAccountInput,
   TopText,
 } from '../styles/createAccount.style';
+import { useState } from 'react';
+import Api from '../../../services/api';
 
 const CreateAccount: React.FC = () => {
-  const handleClick = () => {};
+  const [name, setName] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [confirmPassword, setConfirmPassword] = useState<string>('');
+
+  const handleClick = async () => {
+    const data = {
+      name,
+      email,
+      password,
+      confirmPassword,
+    };
+    if (name !== '' && email !== '' && password !== '' && confirmPassword === password) {
+      console.log('entrei')
+      return await Api.post('/user', data)
+        .then((res) => {
+          console.log(res.data) 
+        })
+        .catch((err) => {
+          console.log(err.data) 
+        });
+    }
+  };
 
   return (
     <CreateAccountContainer>
@@ -18,26 +42,26 @@ const CreateAccount: React.FC = () => {
       <CreateAccountInput
         placeholder={'Nome'}
         placeholderTextColor={'#8d8585'}
-        // onChange={(event: any) => setSearch(event.nativeEvent.text)}
-        // value={search}
+        onChange={(event: any) => setName(event.nativeEvent.text)}
+        value={name}
       />
       <CreateAccountInput
         placeholder={'Email'}
         placeholderTextColor={'#8d8585'}
-        // onChange={(event: any) => setSearch(event.nativeEvent.text)}
-        // value={search}
+        onChange={(event: any) => setEmail(event.nativeEvent.text)}
+        value={email}
       />
       <CreateAccountInput
         placeholder={'Senha'}
         placeholderTextColor={'#8d8585'}
-        // onChange={(event: any) => setSearch(event.nativeEvent.text)}
-        // value={search}
+        onChange={(event: any) => setPassword(event.nativeEvent.text)}
+        value={password}
       />
       <CreateAccountInput
         placeholder={'Confirmar Senha'}
         placeholderTextColor={'#8d8585'}
-        // onChange={(event: any) => setSearch(event.nativeEvent.text)}
-        // value={search}
+        onChange={(event: any) => setConfirmPassword(event.nativeEvent.text)}
+        value={confirmPassword}
       />
       <CreateAccountButton onPress={() => handleClick()}>
         <CreateAccountButtonText>CADASTRAR</CreateAccountButtonText>

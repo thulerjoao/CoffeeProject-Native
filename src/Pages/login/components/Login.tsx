@@ -22,40 +22,38 @@ import {
   RemembermeContainer,
   TicOrNot,
 } from '../styles/login.style';
+import { User } from '../../../globalTypes';
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+
 
 const Login: React.FC = () => {
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const [tick, setTick] = useState<boolean>(true);
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const { login, user } = useAuth();
-
-  // interface LoginParams {
-  //   token: string;
-  //   user: User;
-  //   isChecked: boolean;
-  // }
+  const backTo = 'Login'
 
   const handleLogin = async () => {
     const data = {
-      email: "email@email.com",
-      password: "Abcd@1234"
-    }
+      email: 'email@email.com',
+      password: 'Abcd@1234',
+    };
 
     // const data = {
     //   email,
     //   password,
     // };
-    
-    const response = await Api.post('/auth', data)
-    .then((res: any) => {
-        return res.data;
-      })
-      .catch((err: any) => {
-        return err;
-      });
-    console.log(response)
-   
-   
+    if (data.email !== '' && data.password !== '') {
+      return await Api.post('/auth', data)
+        .then((res) => {
+          const token: string = res.data.token;
+          const user: User = res.data.user;
+          login({ token, user, isChecked: tick });
+        })
+        .catch((err) => {});
+    } else {
+    }
   };
 
   const handleClick = () => {
@@ -91,7 +89,7 @@ const Login: React.FC = () => {
 
       <CreateAccountContainer>
         <CreateAccountFirstText>Novo por aqui?</CreateAccountFirstText>
-        <NewAccountTouch>
+        <NewAccountTouch onPress={()=>navigate('CreateAccount', { backTo }) }>
           <NewAccountTouchText>Criar conta.</NewAccountTouchText>
         </NewAccountTouch>
       </CreateAccountContainer>
