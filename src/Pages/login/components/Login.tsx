@@ -1,6 +1,8 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
+import { useAuth } from '../../../contexts/auth';
+import Api from '../../../services/api';
 import LoginImage from '../assets/LoginImage.png';
 import NotTick from '../assets/NotTick.png';
 import Ticked from '../assets/Ticked.png';
@@ -20,14 +22,12 @@ import {
   RemembermeContainer,
   TicOrNot,
 } from '../styles/login.style';
-import { useAuth } from '../../../contexts/auth';
-import Api, { ConnectionApiGet, baseURL } from '../../../services/api';
 
 const Login: React.FC = () => {
   const [tick, setTick] = useState<boolean>(true);
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
-  const { login, user } = useAuth()
+  const { login, user } = useAuth();
 
   // interface LoginParams {
   //   token: string;
@@ -36,23 +36,31 @@ const Login: React.FC = () => {
   // }
 
   const handleLogin = async () => {
-    return await ConnectionApiGet(`${baseURL}/status`).then((res)=>{
-      console.log(res)
-    }).catch((err)=>{
-      console.log(err)
-    })
-    // const data= {
-    //   email,
-    //   password
-    // }
-    // console.log(data)
-    // const response = await Api.get('/status').then((res)=>{
-    //   console.log(res)
-    // }).catch((err)=>{console.log(err)})
-    // console.log(response)
-  }
+    const data = {
+      email: "email@email.com",
+      password: "Abcd@1234"
+    }
 
-  const handleClick = () => {handleLogin()};
+    // const data = {
+    //   email,
+    //   password,
+    // };
+    
+    const response = await Api.post('/auth', data)
+    .then((res: any) => {
+        return res.data;
+      })
+      .catch((err: any) => {
+        return err;
+      });
+    console.log(response)
+   
+   
+  };
+
+  const handleClick = () => {
+    handleLogin();
+  };
 
   return (
     <LoginContainer>
