@@ -25,7 +25,7 @@ interface AuthProviderData {
 const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 
 export const AuthProvider = ({ children }: AuthProviderProps) => {
-  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { navigate, reset } = useNavigation<NavigationProp<ParamListBase>>();
   const [logged, setLogged] = useState<boolean>(true);
   const [user, setUser] = useState<User>({
     id: '',
@@ -66,7 +66,11 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     }
     setLogged(true);
     setUser(user);
-    navigate('Home');
+    reset({
+      index: 0,
+      routes: [{ name: 'Home' }],
+    });
+    
   };
 
   const logout = () => {
