@@ -62,9 +62,18 @@ const Login: React.FC = () => {
     }
   };
 
-  const handleClick = () => {
+  const handleClickLogin = () => {
     handleLogin();
   };
+
+  const handleClickNewAccount = () => {
+    navigate('CreateAccount', { backTo })
+    setEmail('')
+    setPassword('')
+    setIsError(false)
+  };
+
+  
 
   return (
     <LoginContainer>
@@ -90,13 +99,13 @@ const Login: React.FC = () => {
         <ForgotPassword>Esquecer a senha?</ForgotPassword>
       </BottonContainer>
       {isError && <AlertText>Email ou Senha inválidos</AlertText>}
-      <LoginButton onPress={() => handleClick()}>
+      <LoginButton onPress={() => handleClickLogin()}>
         <LoginButtonText>ENTRAR</LoginButtonText>
       </LoginButton>
 
       <CreateAccountContainer>
         <CreateAccountFirstText>Novo por aqui?</CreateAccountFirstText>
-        <NewAccountTouch onPress={() => navigate('CreateAccount', { backTo })}>
+        <NewAccountTouch onPress={() => handleClickNewAccount()}>
           <NewAccountTouchText>Criar conta.</NewAccountTouchText>
         </NewAccountTouch>
       </CreateAccountContainer>

@@ -19,6 +19,11 @@ export const TopText = styled.Text`
   margin-bottom: 10%;
 `;
 
+export const InputContainer = styled.View`
+  width: 100%;
+  margin-bottom: 9%;
+`;
+
 export const CreateAccountInput = styled.TextInput`
   background-color: #e9e9e9;
   width: 100%;
@@ -34,7 +39,7 @@ export const CreateAccountButton = styled.TouchableOpacity`
   width: 247px;
   justify-content: center;
   align-items: center;
-  margin-top: 18%;
+  margin-top: 9%;
 `;
 export const CreateAccountButtonText = styled.Text`
   color: white;
@@ -46,4 +51,10 @@ export const CreateAccountButtonText = styled.Text`
   padding: 14px 0;
   font-size: 13px;
   font-weight: 600;
+`;
+
+export const AlertText = styled.Text`
+  font-size: 14px;
+  color: #ff2a00;
+  font-weight: 400;
 `;
