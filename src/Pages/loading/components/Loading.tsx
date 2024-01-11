@@ -3,17 +3,18 @@ import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import { useAuth } from '../../../contexts/auth';
 import Cup from '../assets/Cup.png';
 import LogoText from '../assets/LogoText.png';
 import { LoadingContainer, LogoComponent, LogoContainer } from '../styles/loading.styles';
 
 const Loading: React.FC = () => {
   const [startEnd, setStartEnd] = useState<boolean>(false);
-  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
+  const { tokenCheck } = useAuth();
 
   const goToHome = () => {
     setTimeout(() => {
-      navigate('Login');
+      tokenCheck();
     }, 3400);
   };
 

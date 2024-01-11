@@ -6,9 +6,13 @@ const Api: AxiosInstance = axios.create({
   baseURL: 'http://192.168.1.107:3333/',
 });
 
-Api.interceptors.request.use((config: any) => {
+Api.interceptors.request.use(async (config: any) => {
   try {
-    const token = async () => await AsyncStorage.getItem('token');
+    const getToken = async () =>{
+      return await AsyncStorage.getItem('token');
+    }
+    const token = await getToken()
+    
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
       config.headers.contentType= 'application/json';
