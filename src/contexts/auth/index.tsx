@@ -20,7 +20,6 @@ interface AuthProviderData {
   login: (param: LoginParams) => void;
   logout: () => void;
   user: User;
-  token: string;
   getUserByToken: () => void;
 }
 
@@ -29,7 +28,6 @@ const AuthContext = createContext<AuthProviderData>({} as AuthProviderData);
 export const AuthProvider = ({ children }: AuthProviderProps) => {
   const { navigate, reset } = useNavigation<NavigationProp<ParamListBase>>();
   const [logged, setLogged] = useState<boolean>(true);
-  const [token, setToken] = useState<string>();
   const [user, setUser] = useState<User>({
     id: '',
     name: '',
@@ -66,9 +64,15 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
 
     const tokenCheck = async () => {
       const token = await AsyncStorage.getItem('token');
+      console.log(token)
       if (token) {
-        setToken(token)
-        checkTokenExpiration()};
+        checkTokenExpiration()
+      }else{
+        reset({
+          index: 0,
+          routes: [{ name: 'Login' }],
+        });
+      };
     };
  
 
@@ -87,12 +91,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const logout = () => {
     AsyncStorage.clear();
     setLogged(false);
-    navigate('Loading');
+    navigate('Login');
   };
 
   return (
     <AuthContext.Provider
-      value={{ logged, login, logout, user, token, getUserByToken, tokenCheck }}
+      value={{ logged, login, logout, user, getUserByToken, tokenCheck }}
     >
       {children}
     </AuthContext.Provider>

@@ -39,8 +39,10 @@ import { useProductsReducer } from '../../../redux/reduces/productsReducer/usePr
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
 import GlobalCart from '../../globalCart';
+import { useAuth } from '../../../contexts/auth';
 
 const Home: React.FC = () => {
+  const { logout } = useAuth();
   const { productList } = useProductsReducer();
   const { cartList } = useCartReducer();
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
@@ -81,9 +83,11 @@ const Home: React.FC = () => {
     <HomeContainer>
       <StatusBar backgroundColor="#1407072f" barStyle="light-content" translucent />
       <TopComponent>
-        <Location>
-          <LocationIcon source={Icon} />
-          <LocationText>Rio de Janeiro, RJ</LocationText>
+        <Location >
+          <TouchableOpacity onPress={()=>logout()}>
+            <LocationIcon source={Icon} />
+          </TouchableOpacity>
+          <LocationText>Sair</LocationText>
           {cartList.length === 0 ? (
             <TouchableOpacity
               onPress={() => {
