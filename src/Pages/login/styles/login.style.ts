@@ -32,6 +32,7 @@ export const BottonContainer = styled.View`
   flex-direction: row;
   margin-top: 10px;
   padding: 0 10px;
+  margin-bottom: 7.5%;
 `;
 
 export const RemembermeContainer = styled.TouchableOpacity`
@@ -59,7 +60,7 @@ export const LoginButton = styled.TouchableOpacity`
   width: 247px;
   justify-content: center;
   align-items: center;
-  margin-top: 15%;
+  margin-top: 7.5%;
 `;
 export const LoginButtonText = styled.Text`
   color: white;
@@ -93,4 +94,10 @@ export const NewAccountTouchText = styled.Text`
   font-size: 14px;
   font-weight: 600;
   color: #4b2994;
+`;
+
+export const AlertText = styled.Text`
+  font-size: 13px;
+  color: #FF2A00;
+  font-weight: 400;
 `;
