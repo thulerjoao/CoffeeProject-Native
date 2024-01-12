@@ -1,5 +1,10 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { useState } from 'react';
 import { StatusBar } from 'react-native';
+import { useAuth } from '../../../contexts/auth';
+import { User } from '../../../globalTypes';
+import Api from '../../../services/api';
+import { checkIfEmailIsValid } from '../../../utils/validateEmail';
 import {
   AlertText,
   CreateAccountButton,
@@ -9,11 +14,6 @@ import {
   InputContainer,
   TopText,
 } from '../styles/createAccount.style';
-import { useEffect, useState } from 'react';
-import Api from '../../../services/api';
-import { User } from '../../../globalTypes';
-import { useAuth } from '../../../contexts/auth';
-import { checkIfEmailIsValid } from '../../../utils/validateEmail';
 
 const CreateAccount: React.FC = () => {
   const [isError, setIsError] = useState<boolean>(false);

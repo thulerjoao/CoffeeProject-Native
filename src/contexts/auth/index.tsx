@@ -1,8 +1,8 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import { ReactNode, createContext, useState, useEffect, useContext } from 'react';
+import { ReactNode, createContext, useContext, useState } from 'react';
 import { User } from '../../globalTypes';
 import Api from '../../services/api';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface AuthProviderProps {
   children: ReactNode;
