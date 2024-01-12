@@ -7,11 +7,13 @@ import {
   BottomComponent,
   BottomSection,
   BottomTitle,
+  CartIcon,
   CoffeeImage,
+  ExitContainer,
+  ExitIcon,
+  HeaderCointainer,
   HomeContainer,
   HorizontalList,
-  Location,
-  LocationIcon,
   LocationText,
   Search,
   SearchBarContainer,
@@ -23,23 +25,24 @@ import {
   TopTitleFirstSection,
   TopTitleText,
   TypeButtons,
-  TypeButtonsText,
+  TypeButtonsText
 } from '../styles/home.styles';
 
-import Icon from '../assets/Icon.png';
+// import Icon from '../assets/Icon.png';
 import Cart from '../assets/Cart.png';
-import Glass from '../assets/Glass.png';
 import Coffee from '../assets/Coffee.png';
+import Glass from '../assets/Glass.png';
+import exitIcon from '../assets/exitIcon.png';
 // import Coffee01 from '../assets/Coffee01.png';
-import VerticalCard from './VerticalCard';
-import HorizontalCard from './HorizontalCard';
-import { useEffect, useState } from 'react';
-import { CoffeeItem } from '../../../globalTypes';
-import { useProductsReducer } from '../../../redux/reduces/productsReducer/useProductsReducer';
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
-import GlobalCart from '../../globalCart';
+import { useEffect, useState } from 'react';
 import { useAuth } from '../../../contexts/auth';
+import { CoffeeItem } from '../../../globalTypes';
+import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
+import { useProductsReducer } from '../../../redux/reduces/productsReducer/useProductsReducer';
+import GlobalCart from '../../globalCart';
+import HorizontalCard from './HorizontalCard';
+import VerticalCard from './VerticalCard';
 
 const Home: React.FC = () => {
   const { logout } = useAuth();
@@ -83,23 +86,25 @@ const Home: React.FC = () => {
     <HomeContainer>
       <StatusBar backgroundColor="#1407072f" barStyle="light-content" translucent />
       <TopComponent>
-        <Location >
-          <TouchableOpacity onPress={()=>logout()}>
-            <LocationIcon source={Icon} />
-          </TouchableOpacity>
-          <LocationText>Sair</LocationText>
+        <HeaderCointainer>
+          <ExitContainer>
+            <TouchableOpacity onPress={() => logout()}>
+              <ExitIcon source={exitIcon} />
+            </TouchableOpacity>
+            <LocationText>| Olá, João!</LocationText>
+          </ExitContainer>
           {cartList.length === 0 ? (
             <TouchableOpacity
               onPress={() => {
                 navigate('Cart', { backTo });
               }}
             >
-              <LocationIcon source={Cart} />
+              <CartIcon source={Cart} />
             </TouchableOpacity>
           ) : (
             <GlobalCart backTo={backTo} />
           )}
-        </Location>
+        </HeaderCointainer>
         <Search>
           <SearchText>Encontre o café perfeito para qualquer hora do dia</SearchText>
           <SearchBarContainer>

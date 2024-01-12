@@ -3,11 +3,16 @@
 import { StatusBar, TouchableOpacity } from 'react-native';
 import coffee from '../assets/coffee.png';
 // import purpleCart from '../assets/purpleCart.png';
-import whiteCart from '../assets/whiteCart.png';
-import whiteBackArrow from '../assets/whiteBackArrow.png';
-import Smoke from '../assets/Smoke.png';
 import { RouteProp, useRoute } from '@react-navigation/native';
+import Smoke from '../assets/Smoke.png';
+import whiteBackArrow from '../assets/whiteBackArrow.png';
+import whiteCart from '../assets/whiteCart.png';
 
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
+import { useState } from 'react';
+import { productData } from '../../../globalMoked';
+import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
+import GlobalCart from '../../globalCart';
 import {
   AddButton,
   AddButtonText,
@@ -33,11 +38,6 @@ import {
   TopContainer,
   TypeText,
 } from '../styles/product.styles';
-import { useState } from 'react';
-import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import { productData } from '../../../globalMoked';
-import { useCartReducer } from '../../../redux/reduces/cartReducer/useCartReducer';
-import GlobalCart from '../../globalCart';
 
 export interface ProductPageParams {
   productId?: string;

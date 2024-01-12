@@ -14,7 +14,7 @@ export const TopComponent = styled.View`
 
 // ------------Location-------------------
 
-export const Location = styled.View`
+export const HeaderCointainer = styled.View`
   max-width: 100%;
   margin-top: 50px;
   padding: 0 32px;
@@ -24,13 +24,26 @@ export const Location = styled.View`
   align-items: center;
 `;
 
+export const ExitContainer = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+`;
+
+
+
 export const LocationText = styled.Text`
   color: white;
   font-size: 16px;
-  margin-right: 37%;
+  margin-left: 5px;
 `;
 
-export const LocationIcon = styled.Image`
+export const ExitIcon = styled.Image`
+  aspect-ratio: 1;
+  height: 26px;
+  margin-right: 8px;
+`;
+
+export const CartIcon = styled.Image`
   height: 22px;
   margin-right: 5px;
 `;
