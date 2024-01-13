@@ -25,7 +25,7 @@ import {
   TopTitleFirstSection,
   TopTitleText,
   TypeButtons,
-  TypeButtonsText
+  TypeButtonsText,
 } from '../styles/home.styles';
 
 // import Icon from '../assets/Icon.png';
