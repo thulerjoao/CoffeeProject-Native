@@ -37,10 +37,6 @@ const Login: React.FC = () => {
   const backTo = 'Login';
 
   const handleLogin = async () => {
-    // const data = {
-    //   email: 'email@email.com',
-    //   password: 'Abcd@1234',
-    // };
     const data = {
       email,
       password,
@@ -67,13 +63,11 @@ const Login: React.FC = () => {
   };
 
   const handleClickNewAccount = () => {
-    navigate('CreateAccount', { backTo })
-    setEmail('')
-    setPassword('')
-    setIsError(false)
+    navigate('CreateAccount', { backTo });
+    setEmail('');
+    setPassword('');
+    setIsError(false);
   };
-
-  
 
   return (
     <LoginContainer>
@@ -89,6 +83,7 @@ const Login: React.FC = () => {
         placeholder={'Senha'}
         placeholderTextColor={'#8d8585'}
         onChange={(event: any) => setPassword(event.nativeEvent.text)}
+        secureTextEntry
         value={password}
       />
       <BottonContainer>

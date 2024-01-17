@@ -113,12 +113,14 @@ const CreateAccount: React.FC = () => {
           placeholder={'Senha'}
           placeholderTextColor={'#8d8585'}
           onChange={(event: any) => setPassword(event.nativeEvent.text)}
+          secureTextEntry
           value={password}
         />
         <CreateAccountInput
           placeholder={'Confirmar Senha'}
           placeholderTextColor={'#8d8585'}
           onChange={(event: any) => setConfirmPassword(event.nativeEvent.text)}
+          secureTextEntry
           value={confirmPassword}
         />
       </InputContainer>
