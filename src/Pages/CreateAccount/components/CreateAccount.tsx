@@ -12,6 +12,7 @@ import {
   CreateAccountContainer,
   CreateAccountInput,
   InputContainer,
+  Inputdescription,
   TopText,
 } from '../styles/createAccount.style';
 
@@ -50,9 +51,9 @@ const CreateAccount: React.FC = () => {
   };
 
   const handleErrorElse = (prop: MessageType) => {
-      setIsError(true);
-      setErrorType(prop);
-  }
+    setIsError(true);
+    setErrorType(prop);
+  };
 
   const handleClick = async () => {
     const data = {
@@ -67,7 +68,7 @@ const CreateAccount: React.FC = () => {
     };
     if (name !== '' && email !== '' && password !== '' && confirmPassword !== '') {
       if (checkIfEmailIsValid(email)) {
-        if(password === confirmPassword){
+        if (password === confirmPassword) {
           return await Api.post('/user', data)
             .then((res) => {
               Api.post('/auth', loginData)
@@ -81,14 +82,14 @@ const CreateAccount: React.FC = () => {
             .catch((err) => {
               console.log(err.data);
             });
-        }else{
-          handleErrorElse('confirmpassword')
+        } else {
+          handleErrorElse('confirmpassword');
         }
-      }else {
-        handleErrorElse('email')
+      } else {
+        handleErrorElse('email');
       }
     } else {
-      handleErrorElse('empty')
+      handleErrorElse('empty');
     }
   };
 
@@ -97,27 +98,31 @@ const CreateAccount: React.FC = () => {
       <StatusBar backgroundColor="transparent" barStyle="dark-content" translucent />
       <TopText>Cadastro de usuário:</TopText>
       <InputContainer>
+        <Inputdescription>Nome</Inputdescription>
         <CreateAccountInput
-          placeholder={'Nome'}
+          // placeholder={'Nome'}
           placeholderTextColor={'#8d8585'}
           onChange={(event: any) => setName(event.nativeEvent.text)}
           value={name}
         />
+        <Inputdescription>Email</Inputdescription>
         <CreateAccountInput
-          placeholder={'Email'}
+          // placeholder={'Email'}
           placeholderTextColor={'#8d8585'}
           onChange={(event: any) => setEmail(event.nativeEvent.text)}
           value={email}
         />
+        <Inputdescription>Senha</Inputdescription>
         <CreateAccountInput
-          placeholder={'Senha'}
+          // placeholder={'Senha'}
           placeholderTextColor={'#8d8585'}
           onChange={(event: any) => setPassword(event.nativeEvent.text)}
           secureTextEntry
           value={password}
         />
+        <Inputdescription>Confirmar Senha</Inputdescription>
         <CreateAccountInput
-          placeholder={'Confirmar Senha'}
+          // placeholder={'Confirmar Senha'}
           placeholderTextColor={'#8d8585'}
           onChange={(event: any) => setConfirmPassword(event.nativeEvent.text)}
           secureTextEntry
