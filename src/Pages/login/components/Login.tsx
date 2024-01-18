@@ -1,8 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { useState } from 'react';
 import { StatusBar } from 'react-native';
 import { useAuth } from '../../../contexts/auth';
+import { User } from '../../../globalTypes';
 import Api from '../../../services/api';
+import { checkIfEmailIsValid } from '../../../utils/validateEmail';
 import LoginImage from '../assets/LoginImage.png';
 import NotTick from '../assets/NotTick.png';
 import Ticked from '../assets/Ticked.png';
@@ -23,17 +26,15 @@ import {
   RemembermeContainer,
   TicOrNot,
 } from '../styles/login.style';
-import { User } from '../../../globalTypes';
-import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import { checkIfEmailIsValid } from '../../../utils/validateEmail';
 
 const Login: React.FC = () => {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const [tick, setTick] = useState<boolean>(true);
   const [email, setEmail] = useState<string>('');
   const [isError, setIsError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const { login, user } = useAuth();
+  const { login } = useAuth();
   const backTo = 'Login';
 
   const handleLogin = async () => {
@@ -49,12 +50,17 @@ const Login: React.FC = () => {
             const user: User = res.data.user;
             login({ token, user, isChecked: tick });
           })
-          .catch((err) => setIsError(true));
+          .catch((err) => {
+            setIsError(true);
+            setErrorMessage('Email ou Senha inválidos');
+          });
       } else {
         setIsError(true);
+        setErrorMessage('Email ou Senha inválidos');
       }
     } else {
       setIsError(true);
+      setErrorMessage('Preencha todos os campos');
     }
   };
 
@@ -93,7 +99,7 @@ const Login: React.FC = () => {
         </RemembermeContainer>
         <ForgotPassword>Esquecer a senha?</ForgotPassword>
       </BottonContainer>
-      {isError && <AlertText>Email ou Senha inválidos</AlertText>}
+      {isError && <AlertText>{errorMessage}</AlertText>}
       <LoginButton onPress={() => handleClickLogin()}>
         <LoginButtonText>ENTRAR</LoginButtonText>
       </LoginButton>
